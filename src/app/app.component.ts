@@ -5,6 +5,19 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'SK - Controle Combustível';
+
+  constructor(){}
+
+  ngOnInit():void{}
+
+
+  onSelectChange(event : Event)
+  {
+    alert("O valor é ${this.donationValue");
+  }
+
+
 }

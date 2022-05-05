@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-cabecalho',
@@ -12,4 +12,6 @@ export class CabecalhoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
 }
+
