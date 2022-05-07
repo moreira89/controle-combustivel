@@ -7,6 +7,9 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 })
 export class CabecalhoComponent implements OnInit {
 
+  url = 'https://cdn-icons-png.flaticon.com/512/890/890964.png';
+  titlePic = "Logo da SK";
+
   constructor() { }
 
   ngOnInit(): void {
