@@ -11,7 +11,7 @@ import { SobreComponent } from './sobre/sobre.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', component: HomeComponent, pathMatch: 'full'},
   {path: 'veiculo/:veiculoId', component: VeiculoComponent},
   {path: 'veiculos', component: VeiculosComponent},
   {path: 'veiculos/cadastrar', component: VeiculoCadastrarComponent},

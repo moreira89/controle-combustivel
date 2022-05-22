@@ -13,11 +13,4 @@ export class AppComponent {
 
   ngOnInit():void{}
 
-
-  onSelectChange(event : Event)
-  {
-    alert("O valor é ${this.donationValue");
-  }
-
-
 }

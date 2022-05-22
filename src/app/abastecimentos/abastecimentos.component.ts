@@ -21,15 +21,10 @@ export class AbastecimentosComponent implements OnInit {
 
   ngOnInit(): void {
 
-    console.log(this.activatedRoute);
-
-    //const veiculoId = this.activatedRoute.snapshot.params.veiculoId;
-
-    const url: string[] = (this.activatedRoute).toString().split('/');
-    const veiculoId : number = parseInt(url[1]);
+    const veiculoId = +this.activatedRoute.snapshot.paramMap.get('veiculoId')!;
 
     this.abastecimentos = this.abastecimentoService
-                      .listFromVeiculo(veiculoId);
+                                    .listFromVeiculo(veiculoId);
 
   }
 
