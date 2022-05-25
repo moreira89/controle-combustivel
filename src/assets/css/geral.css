@@ -1,0 +1,26 @@
+body{
+ font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  width: 100%;
+  /* background: linear-gradient(#789AFF, #6BDEFF, #61A7E8, darkblue); */
+  background-color: black
+}
+
+p{
+  text-indent: 1rem;
+}
+
+.container {
+width: 940px;
+margin: 0 auto;
+align-items: center;
+/* border: 1px solid red; */
+}
+
+.titulo{
+  font-size: 1.5rem;
+  margin-top: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
