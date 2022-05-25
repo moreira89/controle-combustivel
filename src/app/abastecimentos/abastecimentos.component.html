@@ -1,0 +1,37 @@
+<div class='container'>
+
+  <h2>Abastecimentos</h2>
+
+<table class="table table-dark table-striped">
+  <thead>
+      <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Veiculo</th>
+          <th scope="col">Data</th>
+          <th scope="col">Posto</th>
+          <th scope="col">Combustivel</th>
+          <th scope="col">Odometro</th>
+          <th scope="col">Litros</th>
+          <th scope="col">Valor/Litro</th>
+          <th scope="col">Valor Total</th>
+          <th scope="col">Kms Por Litro</th>
+          <th scope="col">Editar</th>
+      </tr>
+  </thead>
+        <tbody>
+          <tr *ngFor='let abastecimento of abastecimentos'>
+            <th scope="row">{{abastecimento.id}}</th>
+            <th scope="row">{{abastecimento.veiculoId}}</th>
+            <th scope="row">{{abastecimento.dataAbastecimento}}</th>
+            <th scope="row">{{abastecimento.posto}}</th>
+            <th scope="row">{{abastecimento.combustivel}}</th>
+            <th scope="row">{{abastecimento.odometro}}</th>
+            <th scope="row">{{abastecimento.litros}}</th>
+            <th scope="row">{{abastecimento.valorLitro}}</th>
+            <th scope="row">{{abastecimento.valorTotal}}</th>
+            <th scope="row">{{abastecimento.kmPorLitro}}</th>
+            <th scope="row"><a routerLink='/veiculo/{{abastecimento.veiculoId}}/abastecimentos/{{abastecimento.id}}' class="btn btn-success btn-sm">Edit</a></th>
+          </tr>
+        </tbody>
+</table>
+</div>
