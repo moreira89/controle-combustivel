@@ -1,4 +1,4 @@
-export interface Veiculo
+export class Veiculo
 {
   id: number;
   marca: string;
@@ -9,4 +9,5 @@ export interface Veiculo
   litrosTanque: number;
   combustivel: string;
   cambio: string;
+
 }
