@@ -1,8 +1,7 @@
-import { Constants } from './../../util/constants';
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Input } from '@angular/core';
 import { Veiculo } from '../veiculo';
-import { WebStorageutil } from 'src/app/util/web-storage-util';
+import { VeiculoService } from '../veiculo.service';
 
 @Component({
   selector: 'app-veiculos',
@@ -12,53 +11,13 @@ import { WebStorageutil } from 'src/app/util/web-storage-util';
 
 export class VeiculosComponent implements OnInit {
 
-  constructor(private wsu: WebStorageutil){}
-
-  @Input() veiculos: Veiculo[];
-
-   ngOnInit(): void {
+  constructor(private veiculoService: VeiculoService){
+    this.veiculoService = veiculoService;
   }
 
-  OnChanges(){
-    if (this.wsu.veiculos.length > 0){
-      this.veiculos = this.wsu.get("veiculos")!;
-    }else{
-      this.veiculos= [
-        {
-          id: 1,
-          marca: 'Mitsusbishi',
-          modelo: 'Pajero TR4',
-          anoFabricacao: 2008,
-          anoModelo: 2009,
-          litrosTanque: 72,
-          combustivel: 'Flex',
-          cambio: 'Automático',
-          odometro: 100000
-        },
-        {
-          id: 2,
-          marca: 'Hummer',
-          modelo: 'S3',
-          anoFabricacao: 2009,
-          anoModelo: 2010,
-          litrosTanque: 87,
-          combustivel: 'Gasolina',
-          cambio: 'Automático',
-          odometro: 30000
-        },
-        {
-          id: 3,
-          marca: 'Jeep',
-          modelo: 'Wrangler',
-          anoFabricacao: 2010,
-          anoModelo: 2011,
-          litrosTanque: 79,
-          combustivel: 'Gasolina',
-          cambio: 'Automático',
-          odometro: 50000
-        }
-      ];
-    }
+  ngOnInit(): void {
   }
+
+  @Input() veiculos: Veiculo[] = this.veiculoService.selecionarTodos();
 
 }

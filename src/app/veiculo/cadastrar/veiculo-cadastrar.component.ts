@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { VeiculoService } from './../veiculo.service';
+import { Component, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl  } from '@angular/forms';
 
-// import Swal from 'sweetalert2';
-
 import { Veiculo } from './../veiculo';
-import { VeiculoService } from './veiculo-cadastrar.service';
 
 @Component({
   selector: 'app-veiculo-cadastrar',
@@ -15,19 +14,37 @@ import { VeiculoService } from './veiculo-cadastrar.service';
 export class VeiculoCadastrarComponent implements OnInit {
 
   formVeiculo: FormGroup;
-  submitted = false;
-  edit: boolean;
-  displayDialogVeiculo: boolean;
-  idVeiculo: number = 1;
+
+  veiculo: Veiculo;
 
   combustiveis = ['Gasolina', 'Álcool', 'Flex', 'Diesel', 'Elétrico' ];
   cambios = ['Automático', 'Manual'];
 
   constructor(private formBuilder: FormBuilder,
-              private veiculoService: VeiculoService) {}
+              private veiculoService: VeiculoService,
+              private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
-    this.createForm();
+    if (this.activatedRoute.snapshot.paramMap.get('veiculoId') != null){
+
+      const veiculoId = +this.activatedRoute.snapshot.paramMap.get('veiculoId')!;
+
+      this.veiculo = this.veiculoService.selecionarVeiculo(veiculoId);
+
+      this.formVeiculo = this.formBuilder.group({
+        id: new FormControl(veiculoId),
+        marca: new FormControl(this.veiculo.marca, Validators.required),
+        modelo: new FormControl(this.veiculo.modelo, Validators.required),
+        anoModelo: new FormControl(this.veiculo.anoModelo, Validators.required),
+        anoFabricacao: new FormControl(this.veiculo.anoFabricacao, Validators.required),
+        odometro: new FormControl(this.veiculo.odometro, Validators.required),
+        litrosTanque: new FormControl(this.veiculo.litrosTanque, Validators.required),
+        combustivel: new FormControl(this.veiculo.combustivel, Validators.required),
+        cambio: new FormControl(this.veiculo.cambio, Validators.required)
+      })
+    }else{
+      this.createForm();
+    }
   }
 
   createForm() {
@@ -50,19 +67,8 @@ export class VeiculoCadastrarComponent implements OnInit {
 
   onSubmit() {
 
-   this.submitted = true;
-
-    if (this.formVeiculo.value.id == null){
-      this.formVeiculo.value.id = this.idVeiculo++;
-    }
-
     const veiculo: Veiculo = this.formVeiculo.value;
-    this.veiculoService.createOrUpdate(veiculo);
-
-    // aqui você pode implementar a logica para fazer seu formulário salvar
-    console.log(this.formVeiculo.value);
-
-    alert(veiculo);
+    this.veiculoService.cadastrarVeiculo(veiculo);
 
     this.formVeiculo.reset();
   }

@@ -1,7 +1,7 @@
 <div class="container">
 <form [formGroup]='formVeiculo' (ngSubmit)='onSubmit()' method='post'>
 
-  <div class='input-field'>
+  <div>
     <label for='marca'>Marca</label>
     <input type="text" name='marca' formControlName='marca' class='validate' pattern="^([A-Z|À-Ú])+(\s{0,1}[A-Z|À-Ú|a-z|à-ú|0-9]*){0,}" placeholder='Marca do Veículo' required/>
     <div *ngIf='formControls["marca"].touched && formControls["marca"].errors'>
@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <div class='input-field'>
+  <div>
     <label for='modelo'>Modelo</label>
     <input type="text" name='modelo' formControlName='modelo' class='validate' pattern="^([A-Z|À-Ú])+(\s{0,1}[A-Z|À-Ú|a-z|à-ú|0-9]*){0,}" placeholder='Modelo do Veículo'  required/>
     <div *ngIf='formControls["modelo"].touched && formControls["modelo"].errors'>
@@ -17,7 +17,7 @@
     </div>
   </div>
 
-  <div class='input-field'>
+  <div>
     <label for='anoModelo'>Ano do Modelo</label>
     <input type="number" min="1900" name='anoModelo' formControlName="anoModelo" class='validate' placeholder='Ano do Modelo do Veículo' required/>
     <div *ngIf='formControls["anoModelo"].touched && formControls["anoModelo"].errors'>
@@ -25,7 +25,7 @@
     </div>
   </div>
 
-  <div class='input-field'>
+  <div>
     <label for='anoFabricacao'>Ano de Fabricação</label>
     <input type="number" min="1900" name='anoFabricacao' formControlName="anoFabricacao" class='validate' placeholder='Ano da Fabricação do Veículo' required/>
     <div *ngIf='formControls["anoFabricacao"].touched && formControls["anoFabricacao"].errors'>
@@ -33,7 +33,7 @@
     </div>
   </div>
 
-  <div class='input-field'>
+  <div>
     <label for='odometro'>Odômetro</label>
     <input type="number" name='odometro' formControlName="odometro" class='validate' placeholder='Odômetro do Veículo' required/>
     <div *ngIf='formControls["odometro"].touched && formControls["odometro"].errors'>
@@ -41,7 +41,7 @@
     </div>
   </div>
 
-  <div class='input-field'>
+  <div>
     <label for='litrosTanque'>Capacidade em Litros do Tanque</label>
     <input type="number" name='litrosTanque' formControlName='litrosTanque' id='litrosTanque' class='validate' placeholder='Capacidade (em litros) do Tanque de Combustível do Veículo' required/>
     <div *ngIf='formControls["litrosTanque"].touched && formControls["litrosTanque"].errors'>
@@ -57,7 +57,7 @@
     </div>
   </div>-->
 
-  <div class='input-field'>
+  <div>
     <label for='combustivel'>Combustível</label>
     <input type="text" name='combustivel' formControlName='combustivel' id='combustivel' class='validate' placeholder='Combustível' required/>
     <div *ngIf='formControls["combustivel"].touched && formControls["combustivel"].errors'>
@@ -65,7 +65,7 @@
     </div>
   </div>
 
-  <div class='input-field'>
+  <div>
     <label for='cambio'>Câmbio</label>
     <input type="text" name='cambio' formControlName='cambio' id='cambio' class='validate' placeholder='Câmbio do Veículo' required/>
     <div *ngIf='formControls["cambio"].touched && formControls["cambio"].errors'>
@@ -81,12 +81,12 @@
     </div>
   </div>-->
 
+  <div>
+    <input type="submit" [disabled]="!formVeiculo.valid" class="btn btn-primary" value="Salvar">
+  </div>
+
 </form>
 
-<div>
-  <button [disabled]="!formVeiculo.valid" type="button" submit="onSubmit" class="btn btn-primary ">
-    Salvar
-  </button>
-</div>
+
 
 </div>

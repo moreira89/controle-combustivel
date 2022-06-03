@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { VeiculoCadastrarComponent } from './cadastrar/veiculo-cadastrar.component';
+/* import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-veiculo',
@@ -13,3 +12,4 @@ export class VeiculoComponent implements OnInit {
   }
 
 }
+ */
