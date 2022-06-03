@@ -28,4 +28,8 @@ export class VeiculoService
     return this.veiculo;
   }
 
+  deletarVeiculo(idVeiculo: number){
+    this.veiculoStorage.deletarVeiculo(idVeiculo);
+  }
+
 }

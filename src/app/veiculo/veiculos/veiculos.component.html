@@ -17,6 +17,7 @@
               <th scope="col">LitrosTanque</th>
               <th scope="col">Abastecer</th>
               <th scope="col">Editar</th>
+              <th scope="col">Excluir</th>
           </tr>
       </thead>
             <tbody>
@@ -30,8 +31,9 @@
                 <th scope="row">{{veiculo.cambio}}</th>
                 <th scope="row">{{veiculo.odometro}}</th>
                 <th scope="row">{{veiculo.litrosTanque}}</th>
-                <th scope="row"><a routerLink='/veiculo/{{veiculo.id}}/abastecimentos'>Abastecer</a></th>
-                <th scope="row"><a routerLink='/veiculo/editar/{{veiculo.id}}'>Edit</a></th>
+                <th scope="row"><a routerLink='/veiculo/{{veiculo.id}}/abastecimentos'>Abastecimentos</a></th>
+                <th scope="row"><a routerLink='/veiculo/editar/{{veiculo.id}}'>Editar</a></th>
+                <th scope="row"><input type="button" (click)="excluirVeiculos(veiculo.id)" value="Excluir"></th>
               </tr>
             </tbody>
     </table>

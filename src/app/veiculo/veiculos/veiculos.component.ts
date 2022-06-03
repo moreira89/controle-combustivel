@@ -11,13 +11,18 @@ import { VeiculoService } from '../veiculo.service';
 
 export class VeiculosComponent implements OnInit {
 
+  @Input() veiculos: Veiculo[] = [];
+
   constructor(private veiculoService: VeiculoService){
     this.veiculoService = veiculoService;
   }
 
   ngOnInit(): void {
+    this.veiculos = this.veiculoService.selecionarTodos();
   }
 
-  @Input() veiculos: Veiculo[] = this.veiculoService.selecionarTodos();
+  excluirVeiculos(veiculoId: number){
+    this.veiculoService.deletarVeiculo(veiculoId);
+  }
 
 }

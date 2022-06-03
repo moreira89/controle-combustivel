@@ -36,26 +36,23 @@ export class VeiculoStorage
        return Object.assign(this.veiculos.filter(v => v.id === idVeiculo));
     }
 
-    excluirVeiculo(idVeiculo: number){
+    deletarVeiculo(idVeiculo: number){
       this.veiculos = this.localStorage.get("Veiculos");
       this.veiculos = this.veiculos.filter(v => v.id !== idVeiculo);
-      return this.veiculos;
+      this.localStorage.set("Veiculos", this.veiculos!);
     }
 
     retornaId(){
       this.idVeiculo = this.localStorage.get("VeiculoID");
-      console.log("A: " + this.idVeiculo);
       if (this.idVeiculo == null){
-        this.idVeiculo = 1;
-        console.log("B: " + this.idVeiculo);
+        this.idVeiculo = 0;
       }
 
-      console.log("C: " + this.idVeiculo);
       this.localStorage.set("VeiculoID", ++this.idVeiculo);
-      console.log("D: " + this.idVeiculo);
 
       return this.idVeiculo;
 
     }
+
 
 }

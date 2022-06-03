@@ -1,1 +1,90 @@
-<h1>Abastecimento</h1>
+<div class="container">
+  <form [formGroup]='formAbastecimento' (ngSubmit)='onSubmit()' method='post'>
+
+    <div>
+      <label for="id">ID</label>
+      <input type="number" name="id" formControlName="id" value='formControls["id"].value'>
+    </div>
+
+    <div>
+      <label for="veiculoId">Veículo</label>
+      <input type="number" name="veiculoId" formControlName="veiculoId" value='formControls["veiculoId"].value'>
+    </div>
+
+    <div>
+      <label for='dataAbastecimento'>Data do Abastecimento</label>
+      <input type="date" name='dataAbastecimento' formControlName='dataAbastecimento' class='validate' placeholder='Data do Abastecimento' required/>
+      <div *ngIf='formControls["dataAbastecimento"].touched && formControls["dataAbastecimento"].errors'>
+        <div *ngIf='formControls["dataAbastecimento"].errors["required"]' data-error="wrong" data-success="right">Obrigatório o preenchimento da data do abastecimento</div>
+      </div>
+    </div>
+
+    <div>
+      <label for='combustivel'>Combustível</label>
+      <input type="text" name='combustivel' formControlName='combustivel' class='validate' pattern="^([A-Z|À-Ú])+(\s{0,1}[A-Z|À-Ú|a-z|à-ú|0-9]*){0,}" placeholder='Combustível'  required/>
+      <div *ngIf='formControls["combustivel"].touched && formControls["combustivel"].errors'>
+        <div *ngIf='formControls["combustivel"].errors["required"]' data-error="wrong" data-success="right">Obrigatório o preenchimento do combustível</div>
+      </div>
+    </div>
+
+    <!--<<div class='input-field'>
+      <label for='combustivel'>Combustível</label>
+      <ng-select [items]="combustiveis" formControlName='combustivel'></ng-select>
+      <div *ngIf='formControls["combustivel"].touched && formControls["combustivel"].errors' class='validate'>
+        <div *ngIf='formControls["combustivel"].errors["required"]'>Obrigatório o preenchimento do combustível do abastecimento</div>
+      </div>
+    </div>-->
+
+    <div>
+      <label for='litros'>Litros</label>
+      <input type="number" min="1" name='litros' formControlName="litros" class='validate' placeholder='Litros' required/>
+      <div *ngIf='formControls["litros"].touched && formControls["litros"].errors'>
+        <div *ngIf='formControls["litros"].errors["required"]'>Obrigatório o preenchimento da quantidade de litros.</div>
+      </div>
+    </div>
+
+    <div>
+      <label for='odometro'>Odômetro</label>
+      <input type="number" name='odometro' formControlName="odometro" class='validate' placeholder='Odômetro do Veículo' required/>
+      <div *ngIf='formControls["odometro"].touched && formControls["odometro"].errors'>
+        <div *ngIf='formControls["odometro"].errors["required"]'>Obrigatório o preenchimento do odômetro do veículo</div>
+      </div>
+    </div>
+
+    <div>
+      <label for='valorLitro'>Preço do Litro</label>
+      <input type="number" min="0.01" step="0.01" name='valorLitro' formControlName="valorLitro" class='validate' placeholder='Valor do Litro' required/>
+      <div *ngIf='formControls["valorLitro"].touched && formControls["valorLitro"].errors'>
+        <div *ngIf='formControls["valorLitro"].errors["required"]'>Obrigatório o preenchimento do valor do litro do combustível</div>
+      </div>
+    </div>
+
+
+
+    <div>
+      <label for='valorTotal'>Valor Total do Abastecimento</label>
+      <input type="number" name='valorTotal' min="0.01" step="0.01" formControlName='valorTotal' id='valorTotal' class='validate' placeholder='Valor Total do Abastecimento' required/>
+      <div *ngIf='formControls["valorTotal"].touched && formControls["valorTotal"].errors'>
+        <div *ngIf='formControls["valorTotal"].errors["required"]'>Obrigatório o preenchimento do valor Total do Abastecimento</div>
+      </div>
+    </div>
+
+
+
+    <div>
+      <label for='posto'>Posto</label>
+      <input type="text" name='posto' formControlName='posto' id='posto' class='validate' placeholder='Posto' required/>
+      <div *ngIf='formControls["posto"].touched && formControls["posto"].errors'>
+        <div *ngIf='formControls["posto"].errors["required"]'>Obrigatório o preenchimento do posto onde foi realizado o abastecimento</div>
+      </div>
+    </div>
+
+    <div>
+      <input type="submit" [disabled]="!formAbastecimento.valid" class="btn btn-primary" value="Salvar">
+    </div>
+
+  </form>
+
+
+
+  </div>

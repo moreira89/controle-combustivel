@@ -17,6 +17,7 @@ const routes: Routes = [
   {path: 'veiculos/cadastrar', component: VeiculoCadastrarComponent},
   {path: 'veiculo/editar/:veiculoId', component: VeiculoCadastrarComponent},
   {path: 'abastecimento/:abastecimentoId', component: AbastecimentoComponent},
+  {path: 'veiculo/:veiculoId/abastecimento/cadastrar', component: AbastecimentoComponent},
   {path: 'veiculo/:veiculoId/abastecimentos', component: AbastecimentosComponent},
   {path: 'sobre', component: SobreComponent},
   { path: '**', component: NotFoundComponent }
