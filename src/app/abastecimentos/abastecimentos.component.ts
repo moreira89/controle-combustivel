@@ -1,4 +1,4 @@
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -24,7 +24,6 @@ export class AbastecimentosComponent implements OnInit {
   combustiveis = ['Gasolina', 'Álcool', 'Flex', 'Diesel', 'Elétrico' ];
 
   constructor(
-    private formBuilder: FormBuilder,
     private abastecimentoService : AbastecimentoService,
     private activatedRoute: ActivatedRoute){}
 
@@ -34,7 +33,7 @@ export class AbastecimentosComponent implements OnInit {
     }
 
     excluirAbastecimento(veiculoId: number, id: number){
-      this.abastecimentoService.deletarAbastecimento(veiculoId, id);
+      this.abastecimentoService.promiseDeletarAbastecimento(id);
     }
 
 

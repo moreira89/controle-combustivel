@@ -59,8 +59,8 @@
 
   <div>
     <label for='combustivel'>Combustível</label>
-    <input type="text" name='combustivel' formControlName='combustivel' id='combustivel' class='validate' placeholder='Combustível' required/>
-    <div *ngIf='formControls["combustivel"].touched && formControls["combustivel"].errors'>
+    <input type="text" name='combustivel' formControlName='combustivel' id='combustivel' class='validate' placeholder=cambios[nome] required/>
+      <div *ngIf='formControls["combustivel"].touched && formControls["combustivel"].errors'>
       <div *ngIf='formControls["combustivel"].errors["required"]'>Obrigatório o preenchimento do combustível do veículo</div>
     </div>
   </div>
@@ -72,14 +72,6 @@
       <div *ngIf='formControls["cambio"].errors["required"]'>Obrigatório o preenchimento do câmbio do veículo</div>
     </div>
   </div>
-
-  <!--<<div class='input-field'>
-    <label for='cambio'>Câmbio</label>
-    <ng-select [items]="cambios" formControlName='cambio'></ng-select>
-    <div *ngIf='formControls["cambio"].touched && formControls["cambio"].errors' class='validate'>
-      <div *ngIf='formControls["cambio"].errors["required"]'>Obrigatório o preenchimento do câmbio do veículo</div>
-    </div>
-  </div>-->
 
   <div>
     <input type="submit" [disabled]="!formVeiculo.valid" class="btn btn-primary" value="Salvar">

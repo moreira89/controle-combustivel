@@ -1,6 +1,9 @@
-import { ActivatedRoute } from '@angular/router';
+import { Cambio } from './../cambio';
+import { Combustivel } from './../combustivel';
+import { VeiculoCadastrarService } from './veiculo-cadastrar.service';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { VeiculoService } from './../veiculo.service';
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl  } from '@angular/forms';
 
 import { Veiculo } from './../veiculo';
@@ -16,15 +19,22 @@ export class VeiculoCadastrarComponent implements OnInit {
   formVeiculo: FormGroup;
 
   veiculo: Veiculo;
+  selected: string;
 
-  combustiveis = ['Gasolina', 'Álcool', 'Flex', 'Diesel', 'Elétrico' ];
-  cambios = ['Automático', 'Manual'];
+  @Input() cambios: Cambio[] =[];
+  @Input() combustiveis: Combustivel[] = [];
 
   constructor(private formBuilder: FormBuilder,
               private veiculoService: VeiculoService,
-              private activatedRoute: ActivatedRoute) {}
+              private veiculoCadastrarService: VeiculoCadastrarService,
+              private activatedRoute: ActivatedRoute,
+              private router: Router) {}
 
   ngOnInit() {
+
+    this.combustiveis = this.veiculoCadastrarService.promiseSelecionarCombustiveis();
+    this.cambios = this.veiculoCadastrarService.promiseSelecionarCambios();
+
     if (this.activatedRoute.snapshot.paramMap.get('veiculoId') != null){
 
       const veiculoId = +this.activatedRoute.snapshot.paramMap.get('veiculoId')!;
@@ -68,9 +78,13 @@ export class VeiculoCadastrarComponent implements OnInit {
   onSubmit() {
 
     const veiculo: Veiculo = this.formVeiculo.value;
+    console.log("veiculo-cadastrar onSubmit");
     this.veiculoService.cadastrarVeiculo(veiculo);
 
     this.formVeiculo.reset();
+
+    this.router.navigate(["/veiculos"]);
+
   }
 
 }

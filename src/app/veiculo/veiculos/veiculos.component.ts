@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
 import { Veiculo } from '../veiculo';
 import { VeiculoService } from '../veiculo.service';
 
@@ -14,15 +14,14 @@ export class VeiculosComponent implements OnInit {
   @Input() veiculos: Veiculo[] = [];
 
   constructor(private veiculoService: VeiculoService){
-    this.veiculoService = veiculoService;
   }
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.veiculos = this.veiculoService.selecionarTodos();
   }
 
   excluirVeiculos(veiculoId: number){
-    this.veiculoService.deletarVeiculo(veiculoId);
+    this.veiculoService.promiseDeleteVeiculo(veiculoId);
   }
 
 }
