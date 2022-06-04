@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 //import { VeiculoModule } from './veiculo/veiculo.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -41,6 +42,7 @@ import { SobreComponent } from './sobre/sobre.component';
     ReactiveFormsModule,
     AppRoutingModule,
     AngularWebStorageModule,
+    HttpClientModule,
     ErrorsModule,
     //VeiculoModule
   ],

@@ -1,7 +1,7 @@
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Abastecimento } from '../abastecimento/abastecimento';
 import { AbastecimentoService} from './../abastecimento/abastecimento.service';
@@ -23,19 +23,23 @@ export class AbastecimentoComponent implements OnInit {
 
   combustiveis = ['Gasolina', 'Álcool', 'Flex', 'Diesel', 'Elétrico' ];
 
+  veiculoId:number;
+  abastecimentoId:number;
+
   constructor(
     private formBuilder: FormBuilder,
     private abastecimentoService : AbastecimentoService,
-    private activatedRoute: ActivatedRoute){}
+    private activatedRoute: ActivatedRoute,
+    private router: Router){
+      this.veiculoId = +this.activatedRoute.snapshot.paramMap.get('veiculoId')!;
+      this.abastecimentoId = +this.activatedRoute.snapshot.paramMap.get('id')!;
+    }
 
     ngOnInit() {
 
-      const veiculoId = +this.activatedRoute.snapshot.paramMap.get('veiculoId')!;
-      const abastecimentoId = +this.activatedRoute.snapshot.paramMap.get('id')!;
-
       if (this.activatedRoute.snapshot.paramMap.get('id') != null){
 
-        this.abastecimento = this.abastecimentoService.selecionarAbastecimento(veiculoId, abastecimentoId);
+        this.abastecimento = this.abastecimentoService.selecionarAbastecimento(this.veiculoId, this.abastecimentoId);
 
         this.formAbastecimento = this.formBuilder.group({
           id: new FormControl(this.abastecimento.id),
@@ -49,7 +53,7 @@ export class AbastecimentoComponent implements OnInit {
           posto: new FormControl(this.abastecimento.posto, Validators.required)
         })
       }else{
-        this.createForm(veiculoId);
+        this.createForm(this.veiculoId);
       }
     }
 
@@ -78,6 +82,8 @@ export class AbastecimentoComponent implements OnInit {
       this.abastecimentoService.cadastrarAbastecimento(abastecimento);
 
       this.formAbastecimento.reset();
+
+      this.router.navigate([`/veiculo/${this.veiculoId}/abastecimentos`]);
     }
 
 

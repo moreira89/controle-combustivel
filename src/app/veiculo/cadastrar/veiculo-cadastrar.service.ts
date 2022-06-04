@@ -1,18 +1,56 @@
+import { Cambio } from './../cambio';
+import { Combustivel } from './../combustivel';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Veiculo } from '../veiculo';
 
+const API = 'http://localhost:3000';
 
 @Injectable({providedIn: 'root'})
-export class VeiculoService
+export class VeiculoCadastrarService
 {
-  constructor(){  };
+  constructor(private http: HttpClient){  };
 
-  createOrUpdate(veiculo: Veiculo){
+  cambios: Cambio[]=[];
+  combustiveis: Combustivel[] = [];
 
+  promiseSelecionarCambios() : Cambio[]{
+
+    new Promise<Cambio[]>((resolve, reject) => {
+
+      this.http.get<Cambio[]>(`${API}/cambios`).subscribe({
+        next: (res:any)=>{
+                      var c:Cambio[] = res.map((res:Cambio) => {
+                            const s = res;
+                            this.cambios.push(s);
+                       });
+                       resolve(this.cambios);
+              },
+        error: (err:any) =>{
+          reject(console.log(err));
+        }
+      });
+    });
+    return this.cambios;
   }
 
-  delete(veiculo: Veiculo){
+  promiseSelecionarCombustiveis() : Combustivel[]{
 
+    new Promise<Combustivel[]>((resolve, reject) => {
+
+      this.http.get<Combustivel[]>(`${API}/combustiveis`).subscribe({
+        next: (res:any)=>{
+                      var c:Combustivel[] = res.map((res:Combustivel) => {
+                            const s = res;
+                            this.combustiveis.push(s);
+                       });
+                       resolve(this.combustiveis);
+              },
+        error: (err:any) =>{
+          reject(console.log(err));
+        }
+      });
+    });
+    return this.combustiveis;
   }
 
 }

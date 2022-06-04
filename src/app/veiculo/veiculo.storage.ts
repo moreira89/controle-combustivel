@@ -21,13 +21,15 @@ export class VeiculoStorage
 
     cadastrarVeiculo(veiculo: Veiculo){
 
-      this.veiculo = veiculo;
-      if (this.veiculo.id == null){
-        this.veiculo.id = this.retornaId();
-      }
       this.veiculos = this.localStorage.get("Veiculos") != null ? this.localStorage.get("Veiculos") : [];
       this.veiculos.push(veiculo);
       this.localStorage.set("Veiculos", this.veiculos!);
+
+    }
+
+    cadastrarVeiculos(veiculos: Veiculo[]){
+
+      this.localStorage.set("Veiculos", veiculos);
 
     }
 
@@ -37,8 +39,13 @@ export class VeiculoStorage
     }
 
     deletarVeiculo(idVeiculo: number){
+      console.log("storage deletarVeiculo");
       this.veiculos = this.localStorage.get("Veiculos");
       this.veiculos = this.veiculos.filter(v => v.id !== idVeiculo);
+      this.localStorage.set("Veiculos", this.veiculos!);
+    }
+
+    atualizarLocalStorageFromJsonServer(veiculos: Veiculo[]){
       this.localStorage.set("Veiculos", this.veiculos!);
     }
 
