@@ -1,39 +1,50 @@
-
-
 <div class='container'>
 
   <h2>Veiculos</h2>
 
-<table class="table table-dark table-striped">
-  <thead>
-      <tr>
-          <th scope="col">Id</th>
-          <th scope="col">Marca</th>
-          <th scope="col">Modelo</th>
-          <th scope="col">AnoFabricacao</th>
-          <th scope="col">anoModelo</th>
-          <th scope="col">Combustivel</th>
-          <th scope="col">Cambio</th>
-          <th scope="col">Odometro</th>
-          <th scope="col">LitrosTanque</th>
-          <th scope="col">Abastecer</th>
-          <th scope="col">Editar</th>
-      </tr>
-  </thead>
-        <tbody>
-          <tr *ngFor='let veiculo of veiculos'>
-            <th scope="row">{{veiculo.id}}</th>
-            <th scope="row">{{veiculo.marca}}</th>
-            <th scope="row">{{veiculo.modelo}}</th>
-            <th scope="row">{{veiculo.anoFabricacao}}</th>
-            <th scope="row">{{veiculo.anoModelo}}</th>
-            <th scope="row">{{veiculo.combustivel}}</th>
-            <th scope="row">{{veiculo.cambio}}</th>
-            <th scope="row">{{veiculo.odometro}}</th>
-            <th scope="row">{{veiculo.litrosTanque}}</th>
-            <th scope="row"><a routerLink='/veiculo/{{veiculo.id}}/abastecimentos'>Abastecer</a></th>
-            <th scope="row"><a routerLink='/veiculo/cadastrar/{{veiculo.id}}'>Edit</a></th>
+  <div *ngIf="veiculos.length > 0">
+    <table class="table table-dark table-striped">
+      <thead>
+          <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Marca</th>
+              <th scope="col">Modelo</th>
+              <th scope="col">AnoFabricacao</th>
+              <th scope="col">anoModelo</th>
+              <th scope="col">Combustivel</th>
+              <th scope="col">Cambio</th>
+              <th scope="col">Odometro</th>
+              <th scope="col">LitrosTanque</th>
+              <th scope="col">Abastecer</th>
+              <th scope="col">Editar</th>
+              <th scope="col">Excluir</th>
           </tr>
-        </tbody>
-</table>
+      </thead>
+            <tbody>
+              <tr *ngFor='let veiculo of veiculos'>
+                <th scope="row">{{veiculo.id}}</th>
+                <th scope="row">{{veiculo.marca}}</th>
+                <th scope="row">{{veiculo.modelo}}</th>
+                <th scope="row">{{veiculo.anoFabricacao}}</th>
+                <th scope="row">{{veiculo.anoModelo}}</th>
+                <th scope="row">{{veiculo.combustivel}}</th>
+                <th scope="row">{{veiculo.cambio}}</th>
+                <th scope="row">{{veiculo.odometro}}</th>
+                <th scope="row">{{veiculo.litrosTanque}}</th>
+                <th scope="row"><a routerLink='/veiculo/{{veiculo.id}}/abastecimentos'>Abastecimentos</a></th>
+                <th scope="row"><a routerLink='/veiculo/editar/{{veiculo.id}}'>Editar</a></th>
+                <th scope="row"><input type="button" (click)="excluirVeiculos(veiculo.id)" value="Excluir"></th>
+              </tr>
+            </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="veiculos.length == 0">
+    <p>Não há Veículos cadastrados.</p>
+  </div>
+
+  <div>
+    <button><a routerLink="../veiculos/cadastrar" class="btn btn-primary btn-lg">Cadastrar Novo Veículo</a></button>
+  </div>
+
 </div>

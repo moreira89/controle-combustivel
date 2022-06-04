@@ -1,9 +1,10 @@
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Abastecimento } from '../abastecimento/abastecimento';
-import { AbastecimentoService } from './abastecimentos.service';
+import { AbastecimentoService} from './../abastecimento/abastecimento.service';
 
 @Component({
   selector: 'app-abastecimentos',
@@ -13,19 +14,28 @@ import { AbastecimentoService } from './abastecimentos.service';
 
 export class AbastecimentosComponent implements OnInit {
 
+  formAbastecimento: FormGroup;
+
   abastecimentos: Abastecimento[] = [];
 
+  abastecimento: Abastecimento;
+
+
+  combustiveis = ['Gasolina', 'Álcool', 'Flex', 'Diesel', 'Elétrico' ];
+
   constructor(
+    private formBuilder: FormBuilder,
     private abastecimentoService : AbastecimentoService,
     private activatedRoute: ActivatedRoute){}
 
-  ngOnInit(): void {
+    ngOnInit() {
+      const veiculoId = +this.activatedRoute.snapshot.paramMap.get('veiculoId')!;
+      this.abastecimentos = this.abastecimentoService.selecionarTodos(veiculoId);
+    }
 
-    const veiculoId = +this.activatedRoute.snapshot.paramMap.get('veiculoId')!;
+    excluirAbastecimento(veiculoId: number, id: number){
+      this.abastecimentoService.deletarAbastecimento(veiculoId, id);
+    }
 
-    this.abastecimentos = this.abastecimentoService
-                                    .listFromVeiculo(veiculoId);
-
-  }
 
 }

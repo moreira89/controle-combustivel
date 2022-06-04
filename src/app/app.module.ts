@@ -1,5 +1,11 @@
+//import { VeiculoModule } from './veiculo/veiculo.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
+import { NgSelectModule } from '@ng-select/ng-select';
+import { AngularWebStorageModule } from 'angular-web-storage';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,9 +15,9 @@ import { CabecalhoComponent } from './cabecalho/cabecalho.component';
 import { AbastecimentosComponent } from './abastecimentos/abastecimentos.component';
 import { AbastecimentoComponent } from './abastecimento/abastecimento.component';
 import { VeiculosComponent } from './veiculo/veiculos/veiculos.component';
-import { VeiculoComponent } from './veiculo/veiculo.component';
+import { VeiculoCadastrarComponent } from './veiculo/cadastrar/veiculo-cadastrar.component';
+//import { VeiculoComponent } from './veiculo/veiculo.component';
 import { HomeComponent } from './home/home.component';
-/*import { AbastecimentoModule } from './abastecimento/abastecimento.module';*/
 import { ErrorsModule } from './errors/errors.module';
 import { SobreComponent } from './sobre/sobre.component';
 
@@ -21,17 +27,22 @@ import { SobreComponent } from './sobre/sobre.component';
     RodapeComponent,
     CabecalhoComponent,
     HomeComponent,
-    VeiculoComponent,
+    //VeiculoComponent,
+    VeiculoCadastrarComponent,
     VeiculosComponent,
     AbastecimentoComponent,
     AbastecimentosComponent,
-    SobreComponent
+    SobreComponent,
   ],
   imports: [
     BrowserModule,
-    /*AbastecimentoModule,*/
+    FormsModule,
+    NgSelectModule,
+    ReactiveFormsModule,
     AppRoutingModule,
-    ErrorsModule
+    AngularWebStorageModule,
+    ErrorsModule,
+    //VeiculoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
