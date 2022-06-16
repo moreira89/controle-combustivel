@@ -17,11 +17,16 @@ export class VeiculosComponent implements OnInit {
   }
 
   ngOnInit(){
+    this.getVeiculos();
+  }
+
+
+  getVeiculos(){
     this.veiculos = this.veiculoService.selecionarTodos();
   }
 
-  excluirVeiculos(veiculoId: number){
-    this.veiculoService.promiseDeleteVeiculo(veiculoId);
+  excluirVeiculo(veiculoId: number){
+    this.veiculoService.deletarVeiculo(veiculoId);
   }
 
 }

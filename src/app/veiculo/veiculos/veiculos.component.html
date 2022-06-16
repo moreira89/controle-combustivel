@@ -23,17 +23,17 @@
             <tbody>
               <tr *ngFor='let veiculo of veiculos'>
                 <th scope="row">{{veiculo.id}}</th>
-                <th scope="row">{{veiculo.marca}}</th>
-                <th scope="row">{{veiculo.modelo}}</th>
+                <th scope="row">{{veiculo.marca | uppercase}}</th>
+                <th scope="row">{{veiculo.modelo | uppercase}}</th>
                 <th scope="row">{{veiculo.anoFabricacao}}</th>
                 <th scope="row">{{veiculo.anoModelo}}</th>
-                <th scope="row">{{veiculo.combustivel}}</th>
-                <th scope="row">{{veiculo.cambio}}</th>
-                <th scope="row">{{veiculo.odometro}}</th>
+                <th scope="row">{{veiculo.combustivel | lowercase}}</th>
+                <th scope="row">{{veiculo.cambio | lowercase}}</th>
+                <th scope="row">{{veiculo.odometro | number}}</th>
                 <th scope="row">{{veiculo.litrosTanque}}</th>
                 <th scope="row"><a routerLink='/veiculo/{{veiculo.id}}/abastecimentos'>Abastecimentos</a></th>
                 <th scope="row"><a routerLink='/veiculo/editar/{{veiculo.id}}'>Editar</a></th>
-                <th scope="row"><input type="button" (click)="excluirVeiculos(veiculo.id)" value="Excluir"></th>
+                <th scope="row"><input type="button" (click)="excluirVeiculo(veiculo.id)" value="Excluir"></th>
               </tr>
             </tbody>
     </table>

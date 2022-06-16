@@ -29,11 +29,15 @@ export class AbastecimentosComponent implements OnInit {
 
     ngOnInit() {
       const veiculoId = +this.activatedRoute.snapshot.paramMap.get('veiculoId')!;
-      this.abastecimentos = this.abastecimentoService.selecionarTodos(veiculoId);
+      this.getAbastecimentos(veiculoId);
     }
 
-    excluirAbastecimento(veiculoId: number, id: number){
-      this.abastecimentoService.promiseDeletarAbastecimento(id);
+    getAbastecimentos(veiculoId: number){
+      this.abastecimentoService.getAbastecimentos(veiculoId).subscribe(abast => this.abastecimentos = abast);
+    }
+
+    excluirAbastecimento(veiculoId: number, idAbastecimento: number){
+      this.abastecimentoService.deletarAbastecimento(veiculoId, idAbastecimento);
     }
 
 

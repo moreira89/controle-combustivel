@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AbastecimentoStorage } from './abastecimento.storage';
 
@@ -16,60 +17,86 @@ export class AbastecimentoService
   constructor(public abastecimentoStorage: AbastecimentoStorage,
               private http: HttpClient){}
 
-  cadastrarAbastecimento(abastecimento: Abastecimento){
-    console.log("AbastecimentoService cadastrarAbastecimento");
-    this.abastecimentoStorage.cadastrarAbastecimento(abastecimento);
-  }
+  insereAbastecimento(veiculo: Abastecimento){
 
-  selecionarTodos(veiculoId: number){
-  //this.abastecimentos = this.abastecimentoStorage.selecionarTodosAbastecimentos(veiculoId);
-  this.abastecimentos = this.promiseSelecionarTodosAbastecimentos(veiculoId);
-    return this.abastecimentos;
-  }
-
-  promiseSelecionarTodosAbastecimentos(veiculoId: number){
-    console.log("AbastecimentoService promiseSelecionarTodosAbastecimentos");
-
-    this.abastecimentos = [];
-
-    new Promise<Abastecimento[]>((resolve, reject) => {
-
-      this.http.get<Abastecimento[]>(`${API}?veiculoId=${veiculoId}`).subscribe({
-        next: (res:any)=>{
-                      this.abastecimentos = res.map((res:Abastecimento) => {
-                            const v:Abastecimento = new Abastecimento(res.id, res.veiculoId, res.dataAbastecimento, res.combustivel, res.litros, res.odometro, res.valorLitro, res.valorTotal, res.posto);
-                            this.abastecimentos.push(v);
-                       });
-                       resolve(this.abastecimentos);
-              },
-        error: (err:any) =>{
-          reject(console.log(err));
-        }
-      });
-    });
-
-    console.log(this.abastecimentos);
-    console.log("AbastecimentoService.promiseSelecionarTodosAbastecimentos foi finalizada.");
-
-    return this.abastecimentos;
-  }
-
-  selecionarAbastecimento(idVeiculo: number, idAbastecimento:number){
-    this.abastecimento = this.abastecimentoStorage.selecionarAbastecimento(idVeiculo, idAbastecimento);
-    return this.abastecimento;
-  }
-
-  deletarAbastecimento(veiculoId: number, id: number){
-    this.abastecimentoStorage.deletarAbastecimento(veiculoId, id);
-  }
-
-  promiseDeletarAbastecimento(id: number){
-    console.log("AbastecimentoService.promiseDeletarAbastecimento está sendo executado.");
-    console.log(`${API}/${id}`);
+    console.log("AbastecimentoService.insereAbastecimento está sendo executado.");
 
     new Promise<void>((resolve, reject) => {
 
-      this.http.delete(`${API}/${id}`).subscribe({
+      this.http.post(API, veiculo).subscribe({
+                    error: (err:any) =>{
+                      reject(console.log(err));
+                    },
+                    next: () =>{
+                      resolve();
+                    }
+                  });
+    });
+
+  console.log("AbastecimentoService.insereAbastecimento foi finalizada.");
+}
+
+  cadastrarAbastecimento(abastecimento: Abastecimento){
+
+    console.log("AbastecimentoService cadastrarAbastecimento está sendo executado");
+
+    this.insereAbastecimento(abastecimento);
+
+    this.abastecimentos = this.selecionarTodos(abastecimento.veiculoId);
+    this.abastecimentoStorage.atualizarLocalStorageFromJsonServer(this.abastecimentos);
+
+    console.log("AbastecimentoService cadastrarAbastecimento foi finalizado");
+  }
+
+
+  selecionarTodos(veiculoId: number){
+
+    console.log("AbastecimentoService selecionarTodos foi chamado");
+
+    this.getAbastecimentos(veiculoId).subscribe(a => this.abastecimentos = a);
+    this.abastecimentoStorage.atualizarLocalStorageFromJsonServer(this.abastecimentos);
+
+    console.log("AbastecimentoService.selecionarTodos foi finalizada.");
+
+    return this.abastecimentos;
+  }
+
+  getAbastecimentos(veiculoId: number) : Observable<Abastecimento[]>{
+    console.log("AbastecimentoService getAbastecimentos foi chamado");
+
+    return this.http.get<Abastecimento[]>(`${API}?veiculoId=${veiculoId}`);
+  }
+
+  selecionarAbastecimento(idVeiculo: number, idAbastecimento:number){
+
+    console.log("AbastecimentoService.selecionarAbastecimento está sendo executado.");
+
+    this.abastecimento = this.abastecimentoStorage.selecionarAbastecimento(idVeiculo, idAbastecimento);
+
+    console.log("AbastecimentoService.selecionarAbastecimento foi finalizado.");
+
+    return this.abastecimento;
+  }
+
+  deletarAbastecimento(veiculoId: number, idAbastecimento: number){
+
+    console.log("AbastecimentoService.deletarAbastecimento está sendo executado.");
+
+    this.abastecimentoStorage.deletarAbastecimento(veiculoId, idAbastecimento);
+    this.excluirAbastecimento(idAbastecimento);
+
+    console.log("AbastecimentoService.deletarAbastecimento foi finalizado.");
+
+  }
+
+  excluirAbastecimento(idAbastecimento: number){
+
+    console.log("AbastecimentoService.excluirAbastecimento está sendo executado.");
+    console.log(`${API}/${idAbastecimento}`);
+
+    new Promise<void>((resolve, reject) => {
+
+      this.http.delete(`${API}/${idAbastecimento}`).subscribe({
         error: (err:any) =>{
           reject(console.log(err));
         },
@@ -78,7 +105,7 @@ export class AbastecimentoService
         }
       });
     });
-    console.log("AbastecimentoService.promiseDeletarAbastecimento foi finalizada.");
+    console.log("AbastecimentoService.excluirAbastecimento foi finalizada.");
   }
 
 }

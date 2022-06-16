@@ -1,6 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-//import { VeiculoModule } from './veiculo/veiculo.module';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule, DEFAULT_CURRENCY_CODE } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -17,10 +16,15 @@ import { AbastecimentosComponent } from './abastecimentos/abastecimentos.compone
 import { AbastecimentoComponent } from './abastecimento/abastecimento.component';
 import { VeiculosComponent } from './veiculo/veiculos/veiculos.component';
 import { VeiculoCadastrarComponent } from './veiculo/cadastrar/veiculo-cadastrar.component';
-//import { VeiculoComponent } from './veiculo/veiculo.component';
+
 import { HomeComponent } from './home/home.component';
 import { ErrorsModule } from './errors/errors.module';
 import { SobreComponent } from './sobre/sobre.component';
+
+import ptBr from '@angular/common/locales/pt';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
@@ -28,7 +32,6 @@ import { SobreComponent } from './sobre/sobre.component';
     RodapeComponent,
     CabecalhoComponent,
     HomeComponent,
-    //VeiculoComponent,
     VeiculoCadastrarComponent,
     VeiculosComponent,
     AbastecimentoComponent,
@@ -43,10 +46,10 @@ import { SobreComponent } from './sobre/sobre.component';
     AppRoutingModule,
     AngularWebStorageModule,
     HttpClientModule,
-    ErrorsModule,
-    //VeiculoModule
+    ErrorsModule
   ],
-  providers: [],
+  providers: [{provide: LOCALE_ID, useValue: 'pt'},
+{ provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -46,7 +46,7 @@ export class VeiculoStorage
     }
 
     atualizarLocalStorageFromJsonServer(veiculos: Veiculo[]){
-      this.localStorage.set("Veiculos", this.veiculos!);
+      this.localStorage.set("Veiculos", veiculos!);
     }
 
     retornaId(){

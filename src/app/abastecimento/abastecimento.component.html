@@ -37,7 +37,7 @@
 
     <div>
       <label for='litros'>Litros</label>
-      <input type="number" min="1" name='litros' formControlName="litros" class='validate' placeholder='Litros' required/>
+      <input type="number" min="0.01" step="0.01"  name='litros' formControlName="litros" class='validate' placeholder='Litros' required/>
       <div *ngIf='formControls["litros"].touched && formControls["litros"].errors'>
         <div *ngIf='formControls["litros"].errors["required"]'>Obrigatório o preenchimento da quantidade de litros.</div>
       </div>
