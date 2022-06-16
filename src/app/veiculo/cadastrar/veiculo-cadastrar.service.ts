@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Cambio } from './../cambio';
 import { Combustivel } from './../combustivel';
 import { HttpClient } from '@angular/common/http';
@@ -13,43 +14,30 @@ export class VeiculoCadastrarService
   cambios: Cambio[]=[];
   combustiveis: Combustivel[] = [];
 
-  promiseSelecionarCambios() : Cambio[]{
+  selecionaCambio(): Observable<Cambio[]>{
 
-    new Promise<Cambio[]>((resolve, reject) => {
+    console.log("VeiculoCadastrarService selecionaCambio foi chamado");
 
-      this.http.get<Cambio[]>(`${API}/cambios`).subscribe({
-        next: (res:any)=>{
-                      var c:Cambio[] = res.map((res:Cambio) => {
-                            const s = res;
-                            this.cambios.push(s);
-                       });
-                       resolve(this.cambios);
-              },
-        error: (err:any) =>{
-          reject(console.log(err));
-        }
-      });
-    });
+    return this.http.get<Cambio[]>(API);
+
+  }
+
+  getCambio(){
+    this.selecionaCambio().subscribe(cambios => this.cambios = cambios);
     return this.cambios;
   }
 
-  promiseSelecionarCombustiveis() : Combustivel[]{
 
-    new Promise<Combustivel[]>((resolve, reject) => {
+  selecionaCombustivel(): Observable<Cambio[]>{
 
-      this.http.get<Combustivel[]>(`${API}/combustiveis`).subscribe({
-        next: (res:any)=>{
-                      var c:Combustivel[] = res.map((res:Combustivel) => {
-                            const s = res;
-                            this.combustiveis.push(s);
-                       });
-                       resolve(this.combustiveis);
-              },
-        error: (err:any) =>{
-          reject(console.log(err));
-        }
-      });
-    });
+    console.log("VeiculoCadastrarService selecionaCombustivel foi chamado");
+
+    return this.http.get<Combustivel[]>(API);
+
+  }
+
+  getCombustivel(){
+    this.selecionaCombustivel().subscribe(combustiveis => this.combustiveis = combustiveis);
     return this.combustiveis;
   }
 

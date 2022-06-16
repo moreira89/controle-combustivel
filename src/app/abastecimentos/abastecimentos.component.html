@@ -24,13 +24,13 @@
             <tr *ngFor='let abastecimento of abastecimentos'>
               <th scope="row">{{abastecimento.id}}</th>
               <th scope="row">{{abastecimento.veiculoId}}</th>
-              <th scope="row">{{abastecimento.dataAbastecimento}}</th>
-              <th scope="row">{{abastecimento.posto}}</th>
-              <th scope="row">{{abastecimento.combustivel}}</th>
-              <th scope="row">{{abastecimento.odometro}}</th>
-              <th scope="row">{{abastecimento.litros}}</th>
-              <th scope="row">{{abastecimento.valorLitro}}</th>
-              <th scope="row">{{abastecimento.valorTotal}}</th>
+              <th scope="row">{{abastecimento.dataAbastecimento | date:'dd/MM/yyyy'}}</th>
+              <th scope="row">{{abastecimento.posto | uppercase}}</th>
+              <th scope="row">{{abastecimento.combustivel | lowercase}}</th>
+              <th scope="row">{{abastecimento.odometro | number}}</th>
+              <th scope="row">{{abastecimento.litros | number}}</th>
+              <th scope="row">{{abastecimento.valorLitro | currency:"BRL"}}</th>
+              <th scope="row">{{abastecimento.valorTotal | currency:"BRL"}}</th>
               <th scope="row">{{abastecimento.kmPorLitro}}</th>
               <th scope="row"><a routerLink='/veiculo/{{abastecimento.veiculoId}}/abastecimentos/{{abastecimento.id}}' class="btn btn-success btn-sm">Edit</a></th>
               <th scope="row"><input type="button" (click)="excluirAbastecimento(abastecimento.veiculoId, abastecimento.id)" value="Excluir"></th>

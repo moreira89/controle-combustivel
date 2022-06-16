@@ -44,6 +44,10 @@ export class AbastecimentoStorage
       this.localStorage.set("Abastecimentos", this.abastecimentos!);
     }
 
+    atualizarLocalStorageFromJsonServer(abastecimentos: Abastecimento[]){
+      this.localStorage.set("Abastecimentos", abastecimentos!);
+    }
+
     retornaId(){
       this.idAbastecimento = this.localStorage.get("AbastecimentoID");
       if (this.idAbastecimento == null){

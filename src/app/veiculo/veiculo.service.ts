@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { VeiculoStorage } from './veiculo.storage';
 
@@ -25,63 +25,9 @@ export class VeiculoService
                private http: HttpClient){
   }
 
-  promiseSelecionarTodos() : Veiculo[]{
+  insereVeiculo(veiculo: Veiculo){
 
-    console.log("veiculoService promiseSelecionarTodos");
-
-    this.veics = [];
-
-    new Promise<Veiculo[]>((resolve, reject) => {
-
-      this.http.get<Veiculo[]>(API).subscribe({
-        next: (res:any)=>{
-                      this.veiculo = res.map((res:Veiculo) => {
-                            const v:Veiculo = new Veiculo(res.id, res.marca, res.modelo, res.anoFabricacao, res.anoModelo, res.odometro, res.litrosTanque, res.combustivel, res.cambio);
-                            this.veics.push(v);
-                       });
-                       resolve(this.veics);
-              },
-        error: (err:any) =>{
-          reject(console.log(err));
-        }
-      });
-    });
-
-    console.log(this.veics);
-    console.log("veiculoService.promiseSelecionarTodos foi finalizada.");
-
-    return this.veics;
-  }
-
-  promiseCadastrarVeiculoComSelecionar(veiculo: Veiculo) : Veiculo[]{
-
-    console.log("veiculoService promiseCadastrarVeiculoComSelecionar");
-
-    new Promise<Veiculo[]>((resolve, reject) => {
-
-      this.http.post(API, JSON.stringify(veiculo));
-
-      this.http.get<Veiculo[]>(API).subscribe({
-        next: (res:any)=>{
-                      this.veiculo = res.map((res:Veiculo) => {
-                            const v:Veiculo = new Veiculo(res.id, res.marca, res.modelo, res.anoFabricacao, res.anoModelo, res.odometro, res.litrosTanque, res.combustivel, res.cambio);
-                            this.veics.push(v);
-                       });
-                       resolve(this.veics);
-              },
-        error: (err:any) =>{
-          reject(console.log(err));
-        }
-      });
-    });
-    console.log("veiculoService.promiseCadastrarVeiculoComSelecionar foi finalizada.");
-    return this.veics;
-  }
-
-
-    promiseCadastrarVeiculo(veiculo: Veiculo){
-
-      console.log("veiculoService.promiseCadastrarVeiculo está sendo executado.");
+      console.log("veiculoService.insereVeiculo está sendo executado.");
 
       new Promise<void>((resolve, reject) => {
 
@@ -95,11 +41,69 @@ export class VeiculoService
         });
   });
 
-  console.log("veiculoService.promiseCadastrarVeiculo foi finalizada.");
+  console.log("veiculoService.insereVeiculo foi finalizada.");
 }
 
-  promiseDeleteVeiculo(idVeiculo:number){
+  cadastrarVeiculo(veiculo: Veiculo){
+
+    this.veics = [];
+
+    console.log("veiculoService.cadastrarVeiculo está sendo executado.");
+
+    this.insereVeiculo(veiculo);
+
+    this.veiculos = this.selecionarTodos();
+    this.veiculoStorage.cadastrarVeiculos(this.veiculos);
+
+    console.log("veiculoService.cadastrarVeiculo foi finalizada.");
+
+  }
+
+  selecionarTodos(){
+
+    console.log("veiculoService.selecionarTodos está sendo executado.");
+
+    this.getVeiculos().subscribe(v => this.veiculos = v);
+    this.veiculoStorage.atualizarLocalStorageFromJsonServer(this.veiculos);
+
+    console.log("veiculoService.selecionarTodos foi finalizada.");
+
+    return this.veiculos;
+  }
+
+  getVeiculos() : Observable<Veiculo[]>{
+
+    console.log("veiculoService getVeiculos foi chamado");
+
+    return this.http.get<Veiculo[]>(API);
+
+  }
+
+  selecionarVeiculo(idVeiculo:number){
+
+    console.log("veiculoService.selecionarVeiculo está sendo executado.");
+
+    this.veiculo = this.veiculoStorage.selecionarVeiculo(idVeiculo);
+
+    console.log("veiculoService.selecionarVeiculo foi finalizada.");
+
+    return this.veiculo;
+  }
+
+  deletarVeiculo(idVeiculo: number){
+
+    console.log("veiculoService.deletarVeiculo está sendo executado.");
+
+    this.veiculoStorage.deletarVeiculo(idVeiculo);
+    this.excluirVeiculo(idVeiculo);
+
+    console.log("veiculoService.deletarVeiculo foi finalizada.");
+  }
+
+  excluirVeiculo(idVeiculo:number){
+
     console.log("veiculoService.promiseDeleteVeiculo está sendo executado.");
+
     console.log(`${API}/${idVeiculo}`);
 
     new Promise<void>((resolve, reject) => {
@@ -113,50 +117,10 @@ export class VeiculoService
         }
       });
     });
+
     console.log("veiculoService.promiseDeleteVeiculo foi finalizada.");
-  }
 
 
-  cadastrarVeiculo(veiculo: Veiculo){
-
-    this.veics = [];
-
-    console.log("veiculoService.cadastrarVeiculo está sendo executado.");
-
-    this.promiseCadastrarVeiculo(veiculo);
-
-    this.veiculoStorage.cadastrarVeiculos(this.veiculos);
-    console.log("veiculoService.cadastrarVeiculo foi finalizada.");
-  }
-
-  selecionarTodos(){
-
-    console.log("veiculoService.selecionarTodos está sendo executado.");
-    console.log("A");
-    console.log(this.veiculos);
-    this.veiculos = this.promiseSelecionarTodos();
-    //this.veiculos = this.veiculoStorage.selecionarTodosVeiculos();
-    console.log("B");
-    console.log(this.veiculos);
-    this.veiculoStorage.atualizarLocalStorageFromJsonServer(this.veiculos);
-
-    console.log("veiculoService.selecionarTodos foi finalizada.");
-    return this.veiculos;
-  }
-
-  selecionarVeiculo(idVeiculo:number){
-    console.log("veiculoService.selecionarVeiculo está sendo executado.");
-    this.veiculo = this.veiculoStorage.selecionarVeiculo(idVeiculo);
-    console.log("veiculoService.selecionarVeiculo foi finalizada.");
-    return this.veiculo;
-  }
-
-  deletarVeiculo(idVeiculo: number){
-    console.log("veiculoService.deletarVeiculo está sendo executado.");
-    this.veiculoStorage.deletarVeiculo(idVeiculo);
-    this.veiculo = this.selecionarVeiculo(idVeiculo);
-    this.promiseDeleteVeiculo(this.veiculo.id);
-    console.log("veiculoService.deletarVeiculo foi finalizada.");
   }
 
 }

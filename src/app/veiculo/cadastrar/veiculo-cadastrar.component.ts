@@ -32,8 +32,8 @@ export class VeiculoCadastrarComponent implements OnInit {
 
   ngOnInit() {
 
-    this.combustiveis = this.veiculoCadastrarService.promiseSelecionarCombustiveis();
-    this.cambios = this.veiculoCadastrarService.promiseSelecionarCambios();
+    this.combustiveis = this.veiculoCadastrarService.getCombustivel();
+    this.cambios = this.veiculoCadastrarService.getCambio();
 
     if (this.activatedRoute.snapshot.paramMap.get('veiculoId') != null){
 
