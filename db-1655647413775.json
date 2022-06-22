@@ -1,0 +1,328 @@
+{
+  "veiculos": [
+    {
+      "id": 1,
+      "marca": "Mitsubishi",
+      "modelo": "Pajero Tr4",
+      "anoFabricacao": 2008,
+      "anoModelo": 2009,
+      "odometro": 85000,
+      "litrosTanque": 72,
+      "combustivel": "Flex",
+      "cambio": "Automático"
+    },
+    {
+      "id": 2,
+      "marca": "Jeep",
+      "modelo": "Wrangler",
+      "anoFabricacao": 2019,
+      "anoModelo": 2020,
+      "odometro": 35000,
+      "litrosTanque": 80,
+      "combustivel": "Diesel",
+      "cambio": "Automático"
+    },
+    {
+      "id": 3,
+      "marca": "Land Rover",
+      "modelo": "Discover 110",
+      "anoFabricacao": 1999,
+      "anoModelo": 19999,
+      "odometro": 213000,
+      "litrosTanque": 90,
+      "combustivel": "Diesel",
+      "cambio": "Manual"
+    },
+    {
+      "id": 4,
+      "marca": "Troller",
+      "modelo": "T4",
+      "anoFabricacao": 2020,
+      "anoModelo": 2020,
+      "odometro": 32000,
+      "litrosTanque": 52,
+      "combustivel": "Gasolina",
+      "cambio": "Automático"
+    },
+    {
+      "marca": "Dogde",
+      "modelo": "RAM 2500 Laramie",
+      "anoFabricacao": 2022,
+      "anoModelo": 2022,
+      "odometro": 50,
+      "litrosTanque": 92,
+      "combustivel": "Diesel",
+      "cambio": "Automático",
+      "id": 5
+    },
+    {
+      "id": 6,
+      "marca": "Chevrolet",
+      "modelo": "Fusca",
+      "anoModelo": 1959,
+      "anoFabricacao": 1960,
+      "odometro": 123456789,
+      "litrosTanque": 10,
+      "combustivel": "Qualquer Coisa",
+      "cambio": "Empurra-Empurra"
+    },
+    {
+      "id": 7,
+      "marca": "Ford",
+      "modelo": "Bronco",
+      "anoModelo": 2021,
+      "anoFabricacao": 2021,
+      "odometro": 1234,
+      "litrosTanque": 60,
+      "combustivel": "Flex",
+      "cambio": "Automático"
+    },
+    {
+      "id": 8,
+      "marca": "Chevrolet",
+      "modelo": "Fusca",
+      "anoModelo": 1959,
+      "anoFabricacao": 1959,
+      "odometro": 132456789,
+      "litrosTanque": 10,
+      "combustivel": "Qualquer Coisa",
+      "cambio": "Empurra-Empurra"
+    },
+    {
+      "id": 9,
+      "marca": "Mit",
+      "modelo": "P950",
+      "anoModelo": 2000,
+      "anoFabricacao": 2000,
+      "odometro": 1,
+      "litrosTanque": 2,
+      "combustivel": "3",
+      "cambio": "4"
+    },
+    {
+      "id": 10,
+      "marca": "Sds",
+      "modelo": "Fusca",
+      "anoModelo": 2000,
+      "anoFabricacao": 2000,
+      "odometro": 1,
+      "litrosTanque": 2,
+      "combustivel": "3",
+      "cambio": "4"
+    },
+    {
+      "id": 11,
+      "marca": "Mitsubishi",
+      "modelo": "SDASDASd",
+      "anoModelo": 2000,
+      "anoFabricacao": 2000,
+      "odometro": 1,
+      "litrosTanque": 2,
+      "combustivel": "3",
+      "cambio": "2 "
+    },
+    {
+      "id": 12,
+      "marca": "Mitsubishi",
+      "modelo": "Canon sx",
+      "anoModelo": 2000,
+      "anoFabricacao": 2001,
+      "odometro": 15,
+      "litrosTanque": 8,
+      "combustivel": "9",
+      "cambio": "8"
+    },
+    {
+      "id": 13,
+      "marca": "Jeep",
+      "modelo": "Fusca",
+      "anoModelo": 1971,
+      "anoFabricacao": 1972,
+      "odometro": 123,
+      "litrosTanque": 123,
+      "combustivel": "23",
+      "cambio": "12"
+    },
+    {
+      "id": 14,
+      "marca": "Mit",
+      "modelo": "Brsilia",
+      "anoModelo": 1979,
+      "anoFabricacao": 1979,
+      "odometro": 20,
+      "litrosTanque": 20,
+      "combustivel": "20",
+      "cambio": "20"
+    },
+    {
+      "id": 15,
+      "marca": "Chevrolet",
+      "modelo": "Gol",
+      "anoModelo": 2001,
+      "anoFabricacao": 2001,
+      "odometro": 12345,
+      "litrosTanque": 30,
+      "combustivel": "A",
+      "cambio": "A"
+    },
+    {
+      "id": 16,
+      "marca": "Fiat",
+      "modelo": "Uno",
+      "anoModelo": 2007,
+      "anoFabricacao": 2007,
+      "odometro": 123456,
+      "litrosTanque": 30,
+      "combustivel": "Ar",
+      "cambio": "ASd"
+    },
+    {
+      "id": 17,
+      "marca": "Fiat",
+      "modelo": "Tipo",
+      "anoModelo": 1996,
+      "anoFabricacao": 1996,
+      "odometro": 1234567,
+      "litrosTanque": 30,
+      "combustivel": "20",
+      "cambio": "10"
+    },
+    {
+      "id": 18,
+      "marca": "Chevrolet",
+      "modelo": "Monza",
+      "anoModelo": 1993,
+      "anoFabricacao": 19936,
+      "odometro": 121035465,
+      "litrosTanque": 120,
+      "combustivel": "fds",
+      "cambio": "fdsfsd"
+    },
+    {
+      "id": 19,
+      "marca": "Biquini Cavadão",
+      "modelo": "Janaina",
+      "anoModelo": 1985,
+      "anoFabricacao": 1985,
+      "odometro": 2136456,
+      "litrosTanque": 123,
+      "combustivel": "123",
+      "cambio": "123"
+    },
+    {
+      "id": 20,
+      "marca": "Mitsubishi",
+      "modelo": "A200",
+      "anoModelo": 2000,
+      "anoFabricacao": 2001,
+      "odometro": 123,
+      "litrosTanque": 12,
+      "combustivel": "4",
+      "cambio": "1a"
+    },
+    {
+      "id": 21,
+      "marca": "Asd",
+      "modelo": "A200V",
+      "anoModelo": 2001,
+      "anoFabricacao": 2002,
+      "odometro": 321,
+      "litrosTanque": 2,
+      "combustivel": "1",
+      "cambio": "1"
+    }
+  ],
+  "abastecimentos": [
+    {
+      "id": 3,
+      "veiculoId": 2,
+      "dataAbastecimento": "03/06/2022",
+      "combustivel": "Etanol Comum",
+      "litros": 35,
+      "odometro": 35980,
+      "valorLitro": 5.59,
+      "valorTotal": 1965.65,
+      "posto": "Ipiranga"
+    },
+    {
+      "id": 4,
+      "veiculoId": 3,
+      "dataAbastecimento": "02/06/2022",
+      "combustivel": "Diesel",
+      "litros": 40,
+      "odometro": 213450,
+      "valorLitro": 6.59,
+      "valorTotal": 263.6,
+      "posto": "Ipiranga"
+    },
+    {
+      "id": 5,
+      "veiculoId": 3,
+      "dataAbastecimento": "04/06/2022",
+      "combustivel": "Diesel",
+      "litros": 45,
+      "odometro": 213800,
+      "valorLitro": 6.39,
+      "valorTotal": 287.55,
+      "posto": "BR"
+    },
+    {
+      "id": 6,
+      "veiculoId": 3,
+      "dataAbastecimento": "09/06/2022",
+      "combustivel": "Diesel",
+      "litros": 83,
+      "odometro": 214200,
+      "valorLitro": 6.89,
+      "valorTotal": 257.87,
+      "posto": "Shell"
+    },
+    {
+      "veiculoId": 3,
+      "dataAbastecimento": "15/06/2022",
+      "combustivel": "Diesel",
+      "litros": 70,
+      "odometro": 214650,
+      "valorLitro": 6.79,
+      "valorTotal": 475.3,
+      "posto": "BR",
+      "id": 7
+    }
+  ],
+  "combustiveis": [
+    {
+      "chave": "gasolina-comum",
+      "nome": "Gasolina Comum"
+    },
+    {
+      "chave": "gasolina-atividado",
+      "nome": "Gasolina Aditivada"
+    },
+    {
+      "chave": "alcool-comum",
+      "nome": "Álcool Comum"
+    },
+    {
+      "chave": "alcool-atividado",
+      "nome": "Álcool Aditivado"
+    },
+    {
+      "chave": "disel",
+      "nome": "Diesel"
+    },
+    {
+      "chave": "gnv",
+      "nome": "GNV"
+    }
+  ],
+  "cambios": [
+    {
+      "chave": "automatico",
+      "nome": "Automático"
+    },
+    {
+      "chave": "manual",
+      "nome": "Manual"
+    }
+  ]
+}

@@ -3,7 +3,7 @@
 
   <div>
     <label for='marca'>Marca</label>
-    <input type="text" name='marca' formControlName='marca' class='validate' pattern="^([A-Z|À-Ú])+(\s{0,1}[A-Z|À-Ú|a-z|à-ú|0-9]*){0,}" placeholder='Marca do Veículo' required/>
+    <input type="text" name='marca' formControlName='marca' class='validate' pattern="^([A-Z|À-Ú])+(\s{0,1}[A-Z|À-Ú|a-z|à-ú|0-9]*){0,}" placeholder='Marca do Veículo' required />
     <div *ngIf='formControls["marca"].touched && formControls["marca"].errors'>
       <div *ngIf='formControls["marca"].errors["required"]' data-error="wrong" data-success="right">Obrigatório o preenchimento da marca do veículo</div>
     </div>
@@ -78,7 +78,5 @@
   </div>
 
 </form>
-
-
 
 </div>

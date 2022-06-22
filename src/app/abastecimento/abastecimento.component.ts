@@ -83,7 +83,7 @@ export class AbastecimentoComponent implements OnInit {
 
       this.formAbastecimento.reset();
 
-      this.router.navigate([`/veiculo/${this.veiculoId}/abastecimentos`]);
+      this.router.navigate([`/redirectAbast/${abastecimento.veiculoId}`]);
     }
 
 

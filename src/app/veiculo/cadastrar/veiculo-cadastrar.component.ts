@@ -1,3 +1,4 @@
+import { WebStorageUtil } from './../../util/web-storage-util';
 import { Cambio } from './../cambio';
 import { Combustivel } from './../combustivel';
 import { VeiculoCadastrarService } from './veiculo-cadastrar.service';
@@ -14,15 +15,20 @@ import { Veiculo } from './../veiculo';
   styleUrls: ['./veiculo-cadastrar.component.css']
 })
 
+
 export class VeiculoCadastrarComponent implements OnInit {
+
+  CHAVE_STORAGE = 'VEICULOS';
 
   formVeiculo: FormGroup;
 
   veiculo: Veiculo;
   selected: string;
+  veiculosList: Veiculo[];
 
   @Input() cambios: Cambio[] =[];
   @Input() combustiveis: Combustivel[] = [];
+  @Input() veiculoForm: Veiculo;
 
   constructor(private formBuilder: FormBuilder,
               private veiculoService: VeiculoService,
@@ -32,27 +38,34 @@ export class VeiculoCadastrarComponent implements OnInit {
 
   ngOnInit() {
 
+    console.log("VeiculoCadastrarComponent ngOnInit");
+
     this.combustiveis = this.veiculoCadastrarService.getCombustivel();
     this.cambios = this.veiculoCadastrarService.getCambio();
 
     if (this.activatedRoute.snapshot.paramMap.get('veiculoId') != null){
 
+      console.log("VeiculoCadastrarComponent update veiculo");
+
       const veiculoId = +this.activatedRoute.snapshot.paramMap.get('veiculoId')!;
 
-      this.veiculo = this.veiculoService.selecionarVeiculo(veiculoId);
+      this.veiculosList = WebStorageUtil.get('VEICULOS');
+
+      this.veiculoService.selecionarVeiculo(veiculoId).then(v => this.veiculoForm  = v);
 
       this.formVeiculo = this.formBuilder.group({
-        id: new FormControl(veiculoId),
-        marca: new FormControl(this.veiculo.marca, Validators.required),
-        modelo: new FormControl(this.veiculo.modelo, Validators.required),
-        anoModelo: new FormControl(this.veiculo.anoModelo, Validators.required),
-        anoFabricacao: new FormControl(this.veiculo.anoFabricacao, Validators.required),
-        odometro: new FormControl(this.veiculo.odometro, Validators.required),
-        litrosTanque: new FormControl(this.veiculo.litrosTanque, Validators.required),
-        combustivel: new FormControl(this.veiculo.combustivel, Validators.required),
-        cambio: new FormControl(this.veiculo.cambio, Validators.required)
+        id: new FormControl(this.veiculoForm.id),
+        marca: new FormControl(this.veiculoForm.marca, Validators.required),
+        modelo: new FormControl(this.veiculoForm.modelo, Validators.required),
+        anoModelo: new FormControl(this.veiculoForm.anoModelo, Validators.required),
+        anoFabricacao: new FormControl(this.veiculoForm.anoFabricacao, Validators.required),
+        odometro: new FormControl(this.veiculoForm.odometro, Validators.required),
+        litrosTanque: new FormControl(this.veiculoForm.litrosTanque, Validators.required),
+        combustivel: new FormControl(this.veiculoForm.combustivel, Validators.required),
+        cambio: new FormControl(this.veiculoForm.cambio, Validators.required)
       })
     }else{
+      console.log("createForm");
       this.createForm();
     }
   }
@@ -77,13 +90,15 @@ export class VeiculoCadastrarComponent implements OnInit {
 
   onSubmit() {
 
-    const veiculo: Veiculo = this.formVeiculo.value;
     console.log("veiculo-cadastrar onSubmit");
+
+    const veiculo: Veiculo = this.formVeiculo.value;
+
     this.veiculoService.cadastrarVeiculo(veiculo);
 
     this.formVeiculo.reset();
 
-    this.router.navigate(["/veiculos"]);
+    this.router.navigate([`redirectHome`]);
 
   }
 

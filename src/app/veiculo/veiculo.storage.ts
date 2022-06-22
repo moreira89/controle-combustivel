@@ -1,8 +1,12 @@
 import { Veiculo } from './veiculo';
-import { Injectable } from '@angular/core';
-import { LocalStorageService } from 'angular-web-storage';
+import { Inject, Injectable } from '@angular/core';
+//import { LocalStorageService, SessionStorageService, LocalStorage, SessionStorage } from 'angular-web-storage';
+//import {LOCAL_STORAGE, WINDOW} from '@ng-web-apis/common';
 
-@Injectable({providedIn: "root"})
+
+@Injectable({
+  providedIn: 'root'
+})
 export class VeiculoStorage
 {
 
@@ -12,54 +16,57 @@ export class VeiculoStorage
   veiculos: Veiculo[] = [];
   veiculo: Veiculo;
 
-    constructor(private localStorage: LocalStorageService){this.localStorage = localStorage}
+    constructor(){}
 
     selecionarTodosVeiculos(){
-      this.veiculos = this.localStorage.get("Veiculos");
+      console.log("VeiculoStorage selecionarTodosVeiculos foi chamado");
+
+      this.veiculos = JSON.parse(localStorage.getItem("Veiculos")!);
+
+      console.log("VeiculoStorage selecionarTodosVeiculos foi finalizado");
+
       return this.veiculos;
     }
 
     cadastrarVeiculo(veiculo: Veiculo){
+      console.log("VeiculoStorage cadastrarVeiculo");
+      console.log(veiculo);
 
-      this.veiculos = this.localStorage.get("Veiculos") != null ? this.localStorage.get("Veiculos") : [];
-      this.veiculos.push(veiculo);
-      this.localStorage.set("Veiculos", this.veiculos!);
+      let listVeiculos:Veiculo[] = [];
 
+      console.log(listVeiculos);
+      console.log(listVeiculos);
+      listVeiculos.push(veiculo);
+      localStorage.setItem("Veiculos", JSON.stringify(this.veiculos));
     }
 
     cadastrarVeiculos(veiculos: Veiculo[]){
-
-      this.localStorage.set("Veiculos", veiculos);
-
+      console.log("VeiculoStorage cadastrarVeiculos");
+      console.log(veiculos);
+      localStorage.setItem("Veiculos", JSON.stringify(this.veiculos));
     }
 
     selecionarVeiculo(idVeiculo: number){
-       this.veiculos = this.localStorage.get("Veiculos");
+       this.veiculos = JSON.parse(localStorage.getItem("Veiculos")!);
        return Object.assign(this.veiculos.filter(v => v.id === idVeiculo));
     }
 
     deletarVeiculo(idVeiculo: number){
-      console.log("storage deletarVeiculo");
-      this.veiculos = this.localStorage.get("Veiculos");
+      console.log("VeiculoStorage deletarVeiculo");
+      this.veiculos = JSON.parse(localStorage.getItem("Veiculos")!);
       this.veiculos = this.veiculos.filter(v => v.id !== idVeiculo);
-      this.localStorage.set("Veiculos", this.veiculos!);
+      localStorage.setItem("Veiculos", JSON.stringify(this.veiculos));
     }
 
     atualizarLocalStorageFromJsonServer(veiculos: Veiculo[]){
-      this.localStorage.set("Veiculos", veiculos!);
+      console.log("VeiculoStorage atualizarLocalStorageFromJsonServer");
+      console.log("veiculos");
+      console.log(veiculos);
+      localStorage.setItem("Veiculos", JSON.stringify(this.veiculos));
+
+      let v = JSON.parse(localStorage.getItem("Veiculos")!);
+      console.log("v");
+      console.log(v);
     }
 
-    retornaId(){
-      this.idVeiculo = this.localStorage.get("VeiculoID");
-      if (this.idVeiculo == null){
-        this.idVeiculo = 0;
-      }
-
-      this.localStorage.set("VeiculoID", ++this.idVeiculo);
-
-      return this.idVeiculo;
-
-    }
-
-
-}
+ }

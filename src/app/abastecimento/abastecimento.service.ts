@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { WebStorageUtil } from './../util/web-storage-util';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { AbastecimentoStorage } from './abastecimento.storage';
@@ -7,6 +9,8 @@ import { Injectable } from '@angular/core';
 
 const API = 'http://localhost:3000/abastecimentos';
 
+const CHAVE_STORAGE = 'ABASTECIMENTOS';
+
 @Injectable({providedIn: "root"})
 export class AbastecimentoService
 {
@@ -15,7 +19,23 @@ export class AbastecimentoService
   abastecimentos: Abastecimento[] = [];
 
   constructor(public abastecimentoStorage: AbastecimentoStorage,
-              private http: HttpClient){}
+              private http: HttpClient,
+              private router: Router){}
+
+  cadastrarAbastecimento(abastecimento: Abastecimento){
+
+    console.log("AbastecimentoService cadastrarAbastecimento está sendo executado");
+
+    this.abastecimentos.push(abastecimento);
+
+    this.insereAbastecimento(abastecimento);
+
+    WebStorageUtil.set(CHAVE_STORAGE, this.abastecimentos);
+
+    //this.router.navigate([`/redirectAbast/${abastecimento.veiculoId}`]);
+
+    console.log("AbastecimentoService cadastrarAbastecimento foi finalizado");
+  }
 
   insereAbastecimento(veiculo: Abastecimento){
 
@@ -36,29 +56,46 @@ export class AbastecimentoService
   console.log("AbastecimentoService.insereAbastecimento foi finalizada.");
 }
 
-  cadastrarAbastecimento(abastecimento: Abastecimento){
 
-    console.log("AbastecimentoService cadastrarAbastecimento está sendo executado");
-
-    this.insereAbastecimento(abastecimento);
-
-    this.abastecimentos = this.selecionarTodos(abastecimento.veiculoId);
-    this.abastecimentoStorage.atualizarLocalStorageFromJsonServer(this.abastecimentos);
-
-    console.log("AbastecimentoService cadastrarAbastecimento foi finalizado");
-  }
 
 
   selecionarTodos(veiculoId: number){
 
     console.log("AbastecimentoService selecionarTodos foi chamado");
 
-    this.getAbastecimentos(veiculoId).subscribe(a => this.abastecimentos = a);
-    this.abastecimentoStorage.atualizarLocalStorageFromJsonServer(this.abastecimentos);
+    this.abastecimentos = this.selecionarTodosAbastecimentos(veiculoId);
+    WebStorageUtil.set(CHAVE_STORAGE, this.abastecimentos);
 
     console.log("AbastecimentoService.selecionarTodos foi finalizada.");
 
     return this.abastecimentos;
+  }
+
+  selecionarTodosAbastecimentos(veiculoId: number) : Abastecimento[]{
+
+    console.log("AbastecimentoService selecionarTodosAbastecimentos HTTP foi chamado");
+
+    let listAbast : Abastecimento[] = [];
+
+    new Promise<Abastecimento[]>((resolve, reject) => {
+
+      this.http.get<Abastecimento[]>(`${API}?veiculoId=${veiculoId}`).subscribe({
+        next: (res:any)=>{
+                      this.abastecimento = res.map((res:Abastecimento) => {
+                            const a:Abastecimento = new Abastecimento(res.id, res.veiculoId, res.dataAbastecimento, res.combustivel, res.litros, res.odometro, res.valorLitro, res.valorTotal, res.posto);
+                            listAbast.push(a);
+                       });
+                       resolve(listAbast);
+              },
+        error: (err:any) =>{
+          reject(console.log(err));
+        }
+      });
+    });
+
+    console.log("AbastecimentoService selecionarTodosAbastecimentos HTTP foi finalizada.");
+
+    return listAbast;
   }
 
   getAbastecimentos(veiculoId: number) : Observable<Abastecimento[]>{
@@ -106,6 +143,23 @@ export class AbastecimentoService
       });
     });
     console.log("AbastecimentoService.excluirAbastecimento foi finalizada.");
+  }
+
+  recuperaAbastecimento(veiculoId: number, idAbastecimento: number){
+
+    console.log("AbastecimentoService.recuperaAbastecimento está sendo executado");
+
+    let abastecimento = this.abastecimentos.filter(v => {
+                              v.id == idAbastecimento && v.veiculoId == veiculoId;
+                              return new Abastecimento(v.id, v.veiculoId, v.dataAbastecimento, v.combustivel, v.litros, v.odometro, v.valorLitro, v.valorTotal, v.posto);
+                            });
+
+    let abast:Abastecimento = abastecimento[0];
+
+    console.log(abast);
+
+    return abast;
+
   }
 
 }
