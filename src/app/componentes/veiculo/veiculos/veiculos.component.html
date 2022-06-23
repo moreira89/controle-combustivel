@@ -1,0 +1,50 @@
+<div class='container'>
+
+  <h2 class="titulo">Veiculos</h2>
+
+  <div *ngIf="veiculos.length > 0">
+    <table class="table table-striped table-dark table-hover responsive-table titulo">
+      <thead>
+          <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Marca</th>
+              <th scope="col">Modelo</th>
+              <th scope="col">AnoFabricacao</th>
+              <th scope="col">anoModelo</th>
+              <th scope="col">Combustivel</th>
+              <th scope="col">Cambio</th>
+              <th scope="col">Odometro</th>
+              <th scope="col">LitrosTanque</th>
+              <th scope="col">Abastecimentos</th>
+              <th scope="col">Excluir</th>
+          </tr>
+      </thead>
+            <tbody>
+              <tr *ngFor='let veiculo of veiculos'>
+                <th scope="row">{{veiculo.id}}</th>
+                <th scope="row">{{veiculo.marca | uppercase}}</th>
+                <th scope="row">{{veiculo.modelo | uppercase}}</th>
+                <th scope="row">{{veiculo.anoFabricacao}}</th>
+                <th scope="row">{{veiculo.anoModelo}}</th>
+                <th scope="row">{{veiculo.combustivel | lowercase}}</th>
+                <th scope="row">{{veiculo.cambio | lowercase}}</th>
+                <th scope="row">{{veiculo.odometro | number}}</th>
+                <th scope="row">{{veiculo.litrosTanque}}</th>
+                <th scope="row"><a routerLink='/veiculo/{{veiculo.id}}/abastecimentos'>Abastecimentos</a></th>
+                <th scope="row"><input type="button" (click)="excluirVeiculo(veiculo.id)" value="Excluir"></th>
+              </tr>
+            </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="veiculos.length == 0">
+    <p>Não há Veículos cadastrados.</p>
+  </div>
+
+  <div>
+    <button class="btn btn-primary btn-lg botao-principal responsive-width"><a routerLink="../veiculos/cadastrar" class="text-white">
+      <span>Novo Veículo</span>
+    </a></button>
+  </div>
+
+</div>

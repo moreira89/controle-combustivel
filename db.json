@@ -1,0 +1,295 @@
+{
+  "veiculos": [
+    {
+      "id": 1,
+      "marca": "Mitsubishi",
+      "modelo": "TR4",
+      "anoModelo": 2008,
+      "anoFabricacao": 2009,
+      "odometro": 135000,
+      "litrosTanque": 72,
+      "combustivel": "Flex",
+      "cambio": "Automático"
+    },
+    {
+      "id": 2,
+      "marca": "Mitsubishi",
+      "modelo": "L200",
+      "anoModelo": 2015,
+      "anoFabricacao": 2015,
+      "odometro": 37123,
+      "litrosTanque": 100,
+      "combustivel": "Flex",
+      "cambio": "Manual"
+    },
+    {
+      "id": 3,
+      "marca": "Mitsubishi",
+      "modelo": "Pajero Sport",
+      "anoModelo": 2013,
+      "anoFabricacao": 2014,
+      "odometro": 75369,
+      "litrosTanque": 82,
+      "combustivel": "Gasolina",
+      "cambio": "Manual"
+    },
+    {
+      "id": 4,
+      "marca": "Jeep",
+      "modelo": "Wrangler",
+      "anoModelo": 2018,
+      "anoFabricacao": 2019,
+      "odometro": 13879,
+      "litrosTanque": 99,
+      "combustivel": "Diesel",
+      "cambio": "Automático"
+    },
+    {
+      "id": 5,
+      "marca": "Troller",
+      "modelo": "T4",
+      "anoModelo": 2019,
+      "anoFabricacao": 2019,
+      "odometro": 39512,
+      "litrosTanque": 76,
+      "combustivel": "Gasolina",
+      "cambio": "Manual"
+    },
+    {
+      "id": 9,
+      "marca": "Mitsubishi",
+      "modelo": "Pajero Dakar",
+      "anoModelo": 2019,
+      "anoFabricacao": 2019,
+      "odometro": 123456,
+      "litrosTanque": 72,
+      "combustivel": "1",
+      "cambio": "1"
+    },
+    {
+      "id": 13,
+      "marca": "Asd",
+      "modelo": "Fusca",
+      "anoModelo": 2001,
+      "anoFabricacao": 2001,
+      "odometro": 123,
+      "litrosTanque": 1,
+      "combustivel": "2",
+      "cambio": "3"
+    },
+    {
+      "id": 22,
+      "marca": "Novo",
+      "modelo": "Novo007",
+      "anoModelo": 2007,
+      "anoFabricacao": 2007,
+      "odometro": 2007,
+      "litrosTanque": 2007,
+      "combustivel": "7",
+      "cambio": "7"
+    },
+    {
+      "id": 23,
+      "marca": "Chevrolet",
+      "modelo": "Novo",
+      "anoModelo": 2009,
+      "anoFabricacao": 1900,
+      "odometro": 123,
+      "litrosTanque": 456,
+      "combustivel": "789",
+      "cambio": "14263"
+    },
+    {
+      "id": 24,
+      "marca": "Chevrolet",
+      "modelo": "Bronco",
+      "anoModelo": 2009,
+      "anoFabricacao": 2009,
+      "odometro": 2009,
+      "litrosTanque": 1,
+      "combustivel": "1",
+      "cambio": "1"
+    }
+  ],
+  "abastecimentos": [
+    {
+      "id": 4,
+      "veiculoId": null,
+      "dataAbastecimento": "0001-01-01",
+      "combustivel": "A",
+      "litros": 1,
+      "odometro": 1,
+      "valorLitro": 1,
+      "valorTotal": 1,
+      "posto": "1"
+    },
+    {
+      "id": 5,
+      "veiculoId": null,
+      "dataAbastecimento": "0002-02-02",
+      "combustivel": "ASd",
+      "litros": 1,
+      "odometro": 1,
+      "valorLitro": 1,
+      "valorTotal": 1,
+      "posto": "1"
+    },
+    {
+      "id": 6,
+      "veiculoId": 1,
+      "dataAbastecimento": "2020-10-10",
+      "combustivel": "ASd",
+      "litros": 10,
+      "odometro": 10,
+      "valorLitro": 10,
+      "valorTotal": 10,
+      "posto": "10"
+    },
+    {
+      "id": 7,
+      "veiculoId": 1,
+      "dataAbastecimento": "2012-12-12",
+      "combustivel": "ASD",
+      "litros": 12,
+      "odometro": 12,
+      "valorLitro": 12,
+      "valorTotal": 12,
+      "posto": "12"
+    },
+    {
+      "id": 8,
+      "veiculoId": 1,
+      "dataAbastecimento": "2008-08-08",
+      "combustivel": "ASD",
+      "litros": 8,
+      "odometro": 8,
+      "valorLitro": 8,
+      "valorTotal": 8,
+      "posto": "8"
+    },
+    {
+      "id": 9,
+      "veiculoId": 1,
+      "dataAbastecimento": "2009-09-09",
+      "combustivel": "Sdasd",
+      "litros": 9,
+      "odometro": 9,
+      "valorLitro": 9,
+      "valorTotal": 9,
+      "posto": "9"
+    },
+    {
+      "id": 10,
+      "veiculoId": 1,
+      "dataAbastecimento": "2111-01-01",
+      "combustivel": "SDASDASDAS",
+      "litros": 11,
+      "odometro": 11,
+      "valorLitro": 11,
+      "valorTotal": 11,
+      "posto": "11"
+    },
+    {
+      "id": 11,
+      "veiculoId": 1,
+      "dataAbastecimento": "2019-12-15",
+      "combustivel": "NOVO",
+      "litros": 19,
+      "odometro": 19,
+      "valorLitro": 19,
+      "valorTotal": 19,
+      "posto": "19"
+    },
+    {
+      "id": 12,
+      "veiculoId": 1,
+      "dataAbastecimento": "2013-12-13",
+      "combustivel": "A",
+      "litros": 13,
+      "odometro": 13,
+      "valorLitro": 13,
+      "valorTotal": 13,
+      "posto": "13"
+    },
+    {
+      "id": 13,
+      "veiculoId": 1,
+      "dataAbastecimento": "20014-12-14",
+      "combustivel": "ASDAS",
+      "litros": 14,
+      "odometro": 14,
+      "valorLitro": 14,
+      "valorTotal": 14,
+      "posto": "14"
+    },
+    {
+      "id": 14,
+      "veiculoId": 1,
+      "dataAbastecimento": "2007-07-07",
+      "combustivel": "SDASDA",
+      "litros": 17,
+      "odometro": 18,
+      "valorLitro": 17,
+      "valorTotal": 18,
+      "posto": "17"
+    },
+    {
+      "id": 15,
+      "veiculoId": 1,
+      "dataAbastecimento": "2004-03-02",
+      "combustivel": "SDA",
+      "litros": 1,
+      "odometro": 2,
+      "valorLitro": 3,
+      "valorTotal": 4,
+      "posto": "56"
+    },
+    {
+      "id": 16,
+      "veiculoId": 1,
+      "dataAbastecimento": "2007-06-05",
+      "combustivel": "AA",
+      "litros": 1,
+      "odometro": 2,
+      "valorLitro": 3,
+      "valorTotal": 4,
+      "posto": "59"
+    }
+  ],
+  "combustiveis": [
+    {
+      "chave": "gasolina-comum",
+      "nome": "Gasolina Comum"
+    },
+    {
+      "chave": "gasolina-atividado",
+      "nome": "Gasolina Aditivada"
+    },
+    {
+      "chave": "alcool-comum",
+      "nome": "Álcool Comum"
+    },
+    {
+      "chave": "alcool-atividado",
+      "nome": "Álcool Aditivado"
+    },
+    {
+      "chave": "disel",
+      "nome": "Diesel"
+    },
+    {
+      "chave": "gnv",
+      "nome": "GNV"
+    }
+  ],
+  "cambios": [
+    {
+      "chave": "automatico",
+      "nome": "Automático"
+    },
+    {
+      "chave": "manual",
+      "nome": "Manual"
+    }
+  ]
+}
