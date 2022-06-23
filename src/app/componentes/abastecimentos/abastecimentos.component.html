@@ -16,7 +16,6 @@
             <th scope="col">Valor/Litro</th>
             <th scope="col">Valor Total</th>
             <th scope="col">Kms Por Litro</th>
-            <th scope="col">Editar</th>
             <th scope="col">Excluir</th>
         </tr>
     </thead>
@@ -32,7 +31,6 @@
               <th scope="row">{{abastecimento.valorLitro | currency:"BRL"}}</th>
               <th scope="row">{{abastecimento.valorTotal | currency:"BRL"}}</th>
               <th scope="row">{{abastecimento.kmPorLitro}}</th>
-              <th scope="row"><a routerLink='/veiculo/{{abastecimento.veiculoId}}/abastecimentos/{{abastecimento.id}}' class="btn btn-success btn-sm">Edit</a></th>
               <th scope="row"><input type="button" (click)="excluirAbastecimento(abastecimento.veiculoId, abastecimento.id)" value="Excluir"></th>
             </tr>
           </tbody>

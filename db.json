@@ -56,48 +56,59 @@
       "cambio": "Manual"
     },
     {
-      "id": 6,
+      "id": 9,
       "marca": "Mitsubishi",
-      "modelo": "L100",
-      "anoModelo": 2000,
-      "anoFabricacao": 2000,
-      "odometro": 1,
-      "litrosTanque": 1,
+      "modelo": "Pajero Dakar",
+      "anoModelo": 2019,
+      "anoFabricacao": 2019,
+      "odometro": 123456,
+      "litrosTanque": 72,
       "combustivel": "1",
       "cambio": "1"
     },
     {
-      "id": 7,
-      "marca": "Teste",
-      "modelo": "SADs",
-      "anoModelo": 2000,
-      "anoFabricacao": 2000,
-      "odometro": 2,
-      "litrosTanque": 3,
-      "combustivel": "4",
-      "cambio": "5"
+      "id": 13,
+      "marca": "Asd",
+      "modelo": "Fusca",
+      "anoModelo": 2001,
+      "anoFabricacao": 2001,
+      "odometro": 123,
+      "litrosTanque": 1,
+      "combustivel": "2",
+      "cambio": "3"
     },
     {
-      "id": 8,
+      "id": 22,
+      "marca": "Novo",
+      "modelo": "Novo007",
+      "anoModelo": 2007,
+      "anoFabricacao": 2007,
+      "odometro": 2007,
+      "litrosTanque": 2007,
+      "combustivel": "7",
+      "cambio": "7"
+    },
+    {
+      "id": 23,
       "marca": "Chevrolet",
-      "modelo": "SDAsd",
-      "anoModelo": 1999,
-      "anoFabricacao": 1999,
-      "odometro": 2,
-      "litrosTanque": 3,
-      "combustivel": "5",
-      "cambio": "7"
+      "modelo": "Novo",
+      "anoModelo": 2009,
+      "anoFabricacao": 1900,
+      "odometro": 123,
+      "litrosTanque": 456,
+      "combustivel": "789",
+      "cambio": "14263"
     },
     {
-      "id": 9,
-      "marca": "ASdas",
-      "modelo": "SDASDASDASDASDASDA",
-      "anoModelo": 1999,
-      "anoFabricacao": 1999,
-      "odometro": 2,
-      "litrosTanque": 3,
-      "combustivel": "5",
-      "cambio": "7"
+      "id": 24,
+      "marca": "Chevrolet",
+      "modelo": "Bronco",
+      "anoModelo": 2009,
+      "anoFabricacao": 2009,
+      "odometro": 2009,
+      "litrosTanque": 1,
+      "combustivel": "1",
+      "cambio": "1"
     }
   ],
   "abastecimentos": [
@@ -243,28 +254,6 @@
       "valorLitro": 3,
       "valorTotal": 4,
       "posto": "59"
-    },
-    {
-      "id": 17,
-      "veiculoId": 1,
-      "dataAbastecimento": "2013-11-12",
-      "combustivel": "SDAS",
-      "litros": 12,
-      "odometro": 11,
-      "valorLitro": 13,
-      "valorTotal": 12,
-      "posto": "12"
-    },
-    {
-      "id": 18,
-      "veiculoId": 1,
-      "dataAbastecimento": "2003-09-07",
-      "combustivel": "ASDA",
-      "litros": 1,
-      "odometro": 2,
-      "valorLitro": 38,
-      "valorTotal": 9,
-      "posto": "78"
     }
   ],
   "combustiveis": [

@@ -1,13 +1,13 @@
-import { WebStorageUtil } from './../../util/web-storage-util';
-import { Cambio } from './../cambio';
-import { Combustivel } from './../combustivel';
-import { VeiculoCadastrarService } from './veiculo-cadastrar.service';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { VeiculoService } from './../veiculo.service';
+import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl  } from '@angular/forms';
 
-import { Veiculo } from './../veiculo';
+import { Veiculo } from '../../../model/veiculo';
+import { Cambio } from '../../../model/cambio';
+import { Combustivel } from '../../../model/combustivel';
+import { VeiculoService } from '../../../service/veiculo.service';
+import { VeiculoCadastrarService } from '../../../service/veiculo-cadastrar.service';
+
 
 @Component({
   selector: 'app-veiculo-cadastrar',
@@ -17,8 +17,6 @@ import { Veiculo } from './../veiculo';
 
 
 export class VeiculoCadastrarComponent implements OnInit {
-
-  CHAVE_STORAGE = 'VEICULOS';
 
   formVeiculo: FormGroup;
 
@@ -33,7 +31,6 @@ export class VeiculoCadastrarComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private veiculoService: VeiculoService,
               private veiculoCadastrarService: VeiculoCadastrarService,
-              private activatedRoute: ActivatedRoute,
               private router: Router) {}
 
   ngOnInit() {
@@ -43,31 +40,7 @@ export class VeiculoCadastrarComponent implements OnInit {
     this.combustiveis = this.veiculoCadastrarService.getCombustivel();
     this.cambios = this.veiculoCadastrarService.getCambio();
 
-    if (this.activatedRoute.snapshot.paramMap.get('veiculoId') != null){
-
-      console.log("VeiculoCadastrarComponent update veiculo");
-
-      const veiculoId = +this.activatedRoute.snapshot.paramMap.get('veiculoId')!;
-
-      this.veiculosList = WebStorageUtil.get('VEICULOS');
-
-      this.veiculoService.selecionarVeiculo(veiculoId).then(v => this.veiculoForm  = v);
-
-      this.formVeiculo = this.formBuilder.group({
-        id: new FormControl(this.veiculoForm.id),
-        marca: new FormControl(this.veiculoForm.marca, Validators.required),
-        modelo: new FormControl(this.veiculoForm.modelo, Validators.required),
-        anoModelo: new FormControl(this.veiculoForm.anoModelo, Validators.required),
-        anoFabricacao: new FormControl(this.veiculoForm.anoFabricacao, Validators.required),
-        odometro: new FormControl(this.veiculoForm.odometro, Validators.required),
-        litrosTanque: new FormControl(this.veiculoForm.litrosTanque, Validators.required),
-        combustivel: new FormControl(this.veiculoForm.combustivel, Validators.required),
-        cambio: new FormControl(this.veiculoForm.cambio, Validators.required)
-      })
-    }else{
-      console.log("createForm");
-      this.createForm();
-    }
+    this.createForm();
   }
 
   createForm() {

@@ -3,8 +3,8 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Abastecimento } from '../abastecimento/abastecimento';
-import { AbastecimentoService} from './../abastecimento/abastecimento.service';
+import { Abastecimento } from '../../model/abastecimento';
+import { AbastecimentoService} from './abastecimento.service';
 
 @Component({
   selector: 'app-abastecimento',
@@ -24,7 +24,6 @@ export class AbastecimentoComponent implements OnInit {
   combustiveis = ['Gasolina', 'Álcool', 'Flex', 'Diesel', 'Elétrico' ];
 
   veiculoId:number;
-  abastecimentoId:number;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,29 +31,11 @@ export class AbastecimentoComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router){
       this.veiculoId = +this.activatedRoute.snapshot.paramMap.get('veiculoId')!;
-      this.abastecimentoId = +this.activatedRoute.snapshot.paramMap.get('id')!;
     }
 
     ngOnInit() {
-
-      if (this.activatedRoute.snapshot.paramMap.get('id') != null){
-
-        this.abastecimento = this.abastecimentoService.selecionarAbastecimento(this.veiculoId, this.abastecimentoId);
-
-        this.formAbastecimento = this.formBuilder.group({
-          id: new FormControl(this.abastecimento.id),
-          veiculoId: new FormControl(this.abastecimento.veiculoId),
-          dataAbastecimento: new FormControl(this.abastecimento.dataAbastecimento, Validators.required),
-          combustivel: new FormControl(this.abastecimento.combustivel, Validators.required),
-          litros: new FormControl(this.abastecimento.litros, Validators.required),
-          odometro: new FormControl(this.abastecimento.odometro, Validators.required),
-          valorLitro: new FormControl(this.abastecimento.valorLitro, Validators.required),
-          valorTotal: new FormControl(this.abastecimento.valorTotal, Validators.required),
-          posto: new FormControl(this.abastecimento.posto, Validators.required)
-        })
-      }else{
-        this.createForm(this.veiculoId);
-      }
+      console.log("AbastecimentoComponent ngOnInit");
+      this.createForm(this.veiculoId);
     }
 
     createForm(veiculoId: number){
@@ -77,6 +58,8 @@ export class AbastecimentoComponent implements OnInit {
 
 
     onSubmit() {
+
+      console.log("AbastecimentoComponent onSubmit");
 
       const abastecimento: Abastecimento = this.formAbastecimento.value;
       this.abastecimentoService.cadastrarAbastecimento(abastecimento);

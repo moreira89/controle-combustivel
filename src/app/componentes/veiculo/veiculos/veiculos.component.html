@@ -15,8 +15,7 @@
               <th scope="col">Cambio</th>
               <th scope="col">Odometro</th>
               <th scope="col">LitrosTanque</th>
-              <th scope="col">Abastecer</th>
-              <th scope="col">Editar</th>
+              <th scope="col">Abastecimentos</th>
               <th scope="col">Excluir</th>
           </tr>
       </thead>
@@ -32,7 +31,6 @@
                 <th scope="row">{{veiculo.odometro | number}}</th>
                 <th scope="row">{{veiculo.litrosTanque}}</th>
                 <th scope="row"><a routerLink='/veiculo/{{veiculo.id}}/abastecimentos'>Abastecimentos</a></th>
-                <th scope="row"><input type="button" (click)="editarVeiculo(veiculo.id)" value="Editar"></th>
                 <th scope="row"><input type="button" (click)="excluirVeiculo(veiculo.id)" value="Excluir"></th>
               </tr>
             </tbody>

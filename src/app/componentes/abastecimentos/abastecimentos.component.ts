@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Abastecimento } from '../abastecimento/abastecimento';
-import { AbastecimentoService} from './../abastecimento/abastecimento.service';
+import { Abastecimento } from '../../model/abastecimento';
+import { AbastecimentoService} from '../abastecimento/abastecimento.service';
 
 @Component({
   selector: 'app-abastecimentos',
@@ -29,14 +29,8 @@ export class AbastecimentosComponent implements OnInit {
     }
 
      excluirAbastecimento(veiculoId: number, idAbastecimento: number){
-      this.abastecimentoService.deletarAbastecimento(veiculoId, idAbastecimento);
+      this.abastecimentoService.deletarAbastecimento(idAbastecimento);
       this.router.navigate([`redirectAbast/${veiculoId}`]);
     }
-
-    editarAbastecimento(veiculoId: number, idAbastecimento: number){
-      let abastecimento = this.abastecimentoService.recuperaAbastecimento(veiculoId, idAbastecimento);
-      this.router.navigate([`abastecimento/${idAbastecimento}`]);
-    }
-
 
 }

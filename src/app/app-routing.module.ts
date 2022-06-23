@@ -1,14 +1,14 @@
-import { VeiculoCadastrarComponent } from './veiculo/cadastrar/veiculo-cadastrar.component';
+import { VeiculoCadastrarComponent } from './componentes/veiculo/cadastrar/veiculo-cadastrar.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AbastecimentosComponent } from './abastecimentos/abastecimentos.component';
-import { AbastecimentoComponent } from './abastecimento/abastecimento.component';
-import { VeiculosComponent } from './veiculo/veiculos/veiculos.component';
+import { AbastecimentosComponent } from './componentes/abastecimentos/abastecimentos.component';
+import { AbastecimentoComponent } from './componentes/abastecimento/abastecimento.component';
+import { VeiculosComponent } from './componentes/veiculo/veiculos/veiculos.component';
 
-import { HomeComponent } from './home/home.component';
-import { SobreComponent } from './sobre/sobre.component';
-import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { HomeComponent } from './componentes/home/home.component';
+import { SobreComponent } from './componentes/sobre/sobre.component';
+import { NotFoundComponent } from './componentes/errors/not-found/not-found.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},

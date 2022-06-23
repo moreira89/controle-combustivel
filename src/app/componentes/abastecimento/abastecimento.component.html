@@ -1,16 +1,6 @@
 <div class="container">
   <form [formGroup]='formAbastecimento' (ngSubmit)='onSubmit()' method='post'>
 
-<!--     <div>
-      <label for="id">ID</label>
-      <input type="number" name="id" formControlName="id" value='formControls["id"].value'>
-    </div> -->
-
-<!--     <div>
-      <label for="veiculoId">Veículo</label>
-      <output type="number" name="veiculoId" formControlName="veiculoId" value='formControls["veiculoId"]'></output>
-    </div> -->
-
     <div>
       <label for='dataAbastecimento'>Data do Abastecimento</label>
       <input type="date" name='dataAbastecimento' formControlName='dataAbastecimento' class='validate' placeholder='Data do Abastecimento' required/>
@@ -26,14 +16,6 @@
         <div *ngIf='formControls["combustivel"].errors["required"]' data-error="wrong" data-success="right">Obrigatório o preenchimento do combustível</div>
       </div>
     </div>
-
-    <!--<<div class='input-field'>
-      <label for='combustivel'>Combustível</label>
-      <ng-select [items]="combustiveis" formControlName='combustivel'></ng-select>
-      <div *ngIf='formControls["combustivel"].touched && formControls["combustivel"].errors' class='validate'>
-        <div *ngIf='formControls["combustivel"].errors["required"]'>Obrigatório o preenchimento do combustível do abastecimento</div>
-      </div>
-    </div>-->
 
     <div>
       <label for='litros'>Litros</label>
@@ -59,8 +41,6 @@
       </div>
     </div>
 
-
-
     <div>
       <label for='valorTotal'>Valor Total do Abastecimento</label>
       <input type="number" name='valorTotal' min="0.01" step="0.01" formControlName='valorTotal' id='valorTotal' class='validate' placeholder='Valor Total do Abastecimento' required/>
@@ -68,8 +48,6 @@
         <div *ngIf='formControls["valorTotal"].errors["required"]'>Obrigatório o preenchimento do valor Total do Abastecimento</div>
       </div>
     </div>
-
-
 
     <div>
       <label for='posto'>Posto</label>
@@ -84,7 +62,5 @@
     </div>
 
   </form>
-
-
 
   </div>
