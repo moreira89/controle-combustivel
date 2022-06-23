@@ -1,9 +1,12 @@
 # Controle de Abastecimentos
 Este app tem por objetivo o cumprimento da disciplina de Frameworks Web com Angular 2+.
-Este app deve ajudar o usuário a controlar os abastecimentos do veículo, valores gastos, postos, combustíveis utilizados e rendimento.
+Este app deve ajudar o usuário a controlar os abastecimentos do veículo, valores gastos, postos e combustíveis utilizados.
 
 ## *Protótipo*
 https://www.figma.com/file/7O5lBuhK53bysaq7wx1Nos/SK_ControleAbastecimento
+
+## *Hospedagem*
+https://moreira89.github.io/controle-combustivel/
 
 ## *Checklist*
 - [X] Criar o repositório no GitHub com a estrutura do Gitflow, ou seja, branches main e develop.
@@ -24,4 +27,4 @@ https://www.figma.com/file/7O5lBuhK53bysaq7wx1Nos/SK_ControleAbastecimento
 - [X] Apresentar uma lista de dados com a diretiva estrutural ngFor.
 - [X] Usar a diretiva ngIf
 - [X] Formatar a apresentação de dados com Pipes.
-- [ ] Build e deploy da aplicação.
+- [X] Build e deploy da aplicação.

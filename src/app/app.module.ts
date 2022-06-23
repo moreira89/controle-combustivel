@@ -10,16 +10,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { RodapeComponent } from './rodape/rodape.component';
-import { CabecalhoComponent } from './cabecalho/cabecalho.component';
-import { AbastecimentosComponent } from './abastecimentos/abastecimentos.component';
-import { AbastecimentoComponent } from './abastecimento/abastecimento.component';
-import { VeiculosComponent } from './veiculo/veiculos/veiculos.component';
-import { VeiculoCadastrarComponent } from './veiculo/cadastrar/veiculo-cadastrar.component';
+import { RodapeComponent } from './componentes/rodape/rodape.component';
+import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component';
+import { AbastecimentosComponent } from './componentes/abastecimentos/abastecimentos.component';
+import { AbastecimentoComponent } from './componentes/abastecimento/abastecimento.component';
+import { VeiculosComponent } from './componentes/veiculo/veiculos/veiculos.component';
+import { VeiculoCadastrarComponent } from './componentes/veiculo/cadastrar/veiculo-cadastrar.component';
 
-import { HomeComponent } from './home/home.component';
-import { ErrorsModule } from './errors/errors.module';
-import { SobreComponent } from './sobre/sobre.component';
+import { HomeComponent } from './componentes/home/home.component';
+import { ErrorsModule } from './componentes/errors/errors.module';
+import { SobreComponent } from './componentes/sobre/sobre.component';
 
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';

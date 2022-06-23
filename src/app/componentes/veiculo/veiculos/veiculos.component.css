@@ -1,0 +1,31 @@
+.botao-principal{
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.titulo{
+  margin-top: 20px;
+}
+
+.responsive-width {
+  font-size: 2vw;
+}
+
+@media only screen and (max-width: 600px) {
+  button span{
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width: 200px) {
+  button span{
+    display: none;
+  }
+  button :after{
+    content: "Novo";
+    font-size: 18px;
+    color: white;
+  }
+
+}
+
