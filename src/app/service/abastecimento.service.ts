@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Abastecimento } from '../../model/abastecimento';
+import { Abastecimento } from '../model/abastecimento';
 
 
 const API = 'http://localhost:3000/abastecimentos';

@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Abastecimento } from '../../model/abastecimento';
-import { AbastecimentoService} from '../abastecimento/abastecimento.service';
+import { AbastecimentoService} from '../../service/abastecimento.service';
 
 @Component({
   selector: 'app-abastecimentos',
