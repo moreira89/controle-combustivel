@@ -1,10 +1,10 @@
-import { VeiculoCadastrarComponent } from './componentes/veiculo/cadastrar/veiculo-cadastrar.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AbastecimentosComponent } from './componentes/abastecimentos/abastecimentos.component';
 import { AbastecimentoComponent } from './componentes/abastecimento/abastecimento.component';
 import { VeiculosComponent } from './componentes/veiculo/veiculos/veiculos.component';
+import { VeiculoCadastrarComponent } from './componentes/veiculo/cadastrar/veiculo-cadastrar.component';
 
 import { HomeComponent } from './componentes/home/home.component';
 import { SobreComponent } from './componentes/sobre/sobre.component';
