@@ -10,10 +10,10 @@ https://moreira89.github.io/controle-combustivel/
 
 ## *Checklist*
 - [X] Criar o repositório no GitHub com a estrutura do Gitflow, ou seja, branches main e develop.
-- [ ] Usar componentes de algum framework CSS (Bootstrap, Materialize ou outro).
+- [X] Usar componentes de algum framework CSS (Bootstrap, Materialize ou outro).
 - [X] Criar o layout da aplicação com componentes, ou seja, o cabeçalho e rodapé precisam ser componentes.
 - [X] Usar pelo menos dois tipos de data-binding (Interpolation, Property Binding, Event Binding e Two Way Data Binding).
-- [ ] Apresentar as telas com layout responsivo usando ou não algum framework CSS.
+- [X] Apresentar as telas com layout responsivo usando ou não algum framework CSS.
 - [X] Construir páginas web com o conceito de componentes. 
 - [X] Passar dados via hierarquia de componentes, ou seja, usando @Input ou @Output.
 - [X] Mapear componentes à rotas no módulo de rotas.

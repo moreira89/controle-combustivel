@@ -3,7 +3,7 @@
   <h2 class="titulo">Veiculos</h2>
 
   <div *ngIf="veiculos.length > 0">
-    <table class="table table-dark table-striped responsive-table titulo">
+    <table class="table table-striped table-dark table-hover responsive-table titulo">
       <thead>
           <tr>
               <th scope="col">Id</th>
@@ -42,7 +42,9 @@
   </div>
 
   <div>
-    <button class="btn btn-primary btn-lg botao-principal"><a routerLink="../veiculos/cadastrar" class="text-white">Cadastrar Novo Veículo</a></button>
+    <button class="btn btn-primary btn-lg botao-principal responsive-width"><a routerLink="../veiculos/cadastrar" class="text-white">
+      <span>Novo Veículo</span>
+    </a></button>
   </div>
 
 </div>
